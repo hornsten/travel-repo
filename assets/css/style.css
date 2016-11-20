@@ -2,8 +2,6 @@
   height: 500px;
 }
 
-#main-content,
-#vid-area,
 body {
   background-image: url("../images/paris.jpeg");
   background-opacity: 0.3;
@@ -25,4 +23,8 @@ body {
 
 #location-input {
   font-size: 30px;
+}
+
+.progress {
+  margin-top: 20px;
 }
