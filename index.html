@@ -58,28 +58,6 @@
   <div class="parallax-container">
     <div class="parallax"><img src="assets/images/ocean.jpeg"></div>
   </div>
-  <!-- Skyscanner Capability -->
-  <div class="center" id="skyscanner-area">
-    <script type="text/javascript" src="//api.skyscanner.net/api.ashx?key=2a208cf3-bdbb-494f-b25e-ad293cada1d0&ssl=true"></script>
-    <script type="text/javascript">
-    skyscanner.load("snippets", "2");
-
-    function main() {
-      var snippet = new skyscanner.snippets.SearchPanelControl();
-      snippet.setShape("leaderboard");
-      snippet.setCulture("en-GB");
-      snippet.setCurrency("USD");
-      snippet.setMarket("US");
-      snippet.setColourScheme("classicbluelight");
-      snippet.setProduct("flights", "1");
-      snippet.setProduct("hotels", "2");
-      snippet.setProduct("carhire", "3");
-
-      snippet.draw(document.getElementById("snippet_searchpanel"));
-    }
-    skyscanner.setOnLoadCallback(main);
-    </script>
-  </div>
   <div id="snippet_searchpanel" style="width: auto; height:auto;"></div>
   <div class="parallax-container">
     <div class="parallax"><img src="assets/images/paris.jpeg"></div>

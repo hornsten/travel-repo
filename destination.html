@@ -32,20 +32,27 @@
     </div>
   </nav>
   <div class="row">
-    <div class="col s12 m7" id="vid-display">
-      <!-- Artist Select Box -->
-      <form id="artist-form">
-        <!-- Label for Text Box -->
-        <label for="artist-input">Choose Your Artist</label>
-        <!-- Text Input Box -->
-        <input type="text" id="artist-input">
-        <br>
-        <!-- Submit Button -->
-        <input id="selectArtist" type="submit" value="GO!">
-      </form>
-      <!-- Spotify Player Goes Here -->
-      <div id="playerDiv">
-      </div>
+    <!-- Skyscanner Capability -->
+    <div class="col s12 m7" id="skyscanner-area">
+      <script type="text/javascript" src="//api.skyscanner.net/api.ashx?key=2a208cf3-bdbb-494f-b25e-ad293cada1d0&ssl=true"></script>
+      <script type="text/javascript">
+      skyscanner.load("snippets", "2");
+
+      function main() {
+        var snippet = new skyscanner.snippets.SearchPanelControl();
+        snippet.setShape("leaderboard");
+        snippet.setCulture("en-GB");
+        snippet.setCurrency("USD");
+        snippet.setMarket("US");
+        snippet.setColourScheme("classicbluelight");
+        snippet.setProduct("flights", "1");
+        snippet.setProduct("hotels", "2");
+        snippet.setProduct("carhire", "3");
+
+        snippet.draw(document.getElementById("snippet_searchpanel"));
+      }
+      skyscanner.setOnLoadCallback(main);
+      </script>
     </div>
     <div class="col sm12 m5">MAP AREA</div>
   </div>
