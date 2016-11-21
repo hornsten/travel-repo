@@ -21,8 +21,8 @@
 
 <body>
   <!-- Navbar -->
-  <nav>
-    <div class="nav-wrapper teal lighten-4 fixed-nav-bar">
+  <nav class="fixed-nav-bar">
+    <div class="nav-wrapper teal lighten-4 ">
       <a href="#" class="brand-logo">Logo</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="index.html">Home</a></li>
@@ -39,7 +39,7 @@
 
     function main() {
       var snippet = new skyscanner.snippets.SearchPanelControl();
-      snippet.setShape("box600x600");
+      snippet.setShape("box400x400");
       snippet.setCulture("en-GB");
       snippet.setCurrency("USD");
       snippet.setMarket("US");
