@@ -14,8 +14,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <!-- Materialize CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" integrity="sha256-3AnlRNIdX11hf3yyjAb12b2Tac0VmZxGxpVRURyJIAw=" crossorigin="anonymous" />
+  <script type="text/javascript" src="OAuth.js"></script>
+  <script type="text/javascript" src="SHA1.js"></script>
+  <!--Map CDN-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  =======
   <!-- Our CSS file -->
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css"> >>>>>>> a0b02be16a4bd7959f9ab5aa414da0e4953c21af
   <!-- My javascript files -->
 </head>
 
@@ -53,13 +60,73 @@
       snippet.draw(document.getElementById("snippet_searchpanel"));
     }
     skyscanner.setOnLoadCallback(main);
+
+    //map script starts here 
+
+
+    var map;
+    var geocoder;
+
+    function initialize() {
+      var myLatlong = new google.maps.LatLng(48.856614, 2.3522219000000177);
+      var myOptions = {
+        zoom: 8,
+        center: myLatlong,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+      geocoder = new google.maps.Geocoder();
+    }
+
+    $(document).ready(function() {
+      $("#autocomplete").autocomplete({
+        source: function(request, response) {
+          geocoder.geocode({
+            'address': request.term
+          }, function(results) {
+            response($.map(results, function(item) {
+              return {
+                label: item.formatted_address,
+                value: item.formatted_address,
+                latitude: item.geometry.location.lat(),
+                longitude: item.geometry.location.lng(),
+              }
+
+            }))
+          })
+        },
+        select: function(event, ui) {
+          var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
+          marker = new google.maps.Marker({
+            map: map,
+            draggable: true
+          })
+          var stringvalue = 'latitude:<input type="text" value="' + ui.item.latitude + '" >Longitude:<input type="text" value="' + ui.item.longitude + '"><br/>';
+          $("#value").append(stringvalue);
+          marker.setPosition(location);
+          map.setCenter(location);
+
+
+        }
+
+      })
+
+    });
     </script>
     <div class="col sm12 m5" id="snippet_searchpanel" style="width: 500px; height:1000px;"></div>
-    <div class="col sm12 m7">MAP AREA</div>
+    <div class="col sm12 m7" id="map-area">MAP AREA
+      <label>Explore your favorite destination</label>
+      <input type="text" id="autocomplete">
+      <div id="map_canvas" style="width:500px;height:500px;float:left; border: solid 3px; background-color: blue">
+      </div>
+    </div>
+    <!--map closed-->
   </div>
-  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initMap">
-  </script> -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initialize">
+  </script>
   <script src="assets/javascript/tester.js"></script>
+  <script type="assets/javascript/map.js"></script>
+  <script type="assets/javascript/yelpapi.js"></script>
 </body>
 
 </html>
