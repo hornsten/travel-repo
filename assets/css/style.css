@@ -5,7 +5,7 @@
 body {
   background-image: url("../images/paris.jpeg");
   background-opacity: 0.3;
-  padding-top: 100px;
+  padding-top: 70px;
 }
 
 #main-content {
@@ -34,6 +34,7 @@ body {
   margin-top: 20px;
 }
 
-#skyscanner-area {
-  background-color: #eeeeee;
+#rome2rio-input {
+  float: left;
+  display: inline;
 }
