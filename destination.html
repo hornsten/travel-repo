@@ -33,27 +33,24 @@
   </nav>
   <div class="row">
     <!-- Skyscanner Capability -->
-    <div class="col s12 m7" id="skyscanner-area">
-      <script type="text/javascript" src="//api.skyscanner.net/api.ashx?key=2a208cf3-bdbb-494f-b25e-ad293cada1d0&ssl=true"></script>
-      <script type="text/javascript">
-      skyscanner.load("snippets", "2");
+    <script type="text/javascript" src="//api.skyscanner.net/api.ashx?key=2a208cf3-bdbb-494f-b25e-ad293cada1d0&ssl=true"></script>
+    <script type="text/javascript">
+    skyscanner.load("snippets", "2");
 
-      function main() {
-        var snippet = new skyscanner.snippets.SearchPanelControl();
-        snippet.setShape("leaderboard");
-        snippet.setCulture("en-GB");
-        snippet.setCurrency("USD");
-        snippet.setMarket("US");
-        snippet.setColourScheme("classicbluelight");
-        snippet.setProduct("flights", "1");
-        snippet.setProduct("hotels", "2");
-        snippet.setProduct("carhire", "3");
+    function main() {
+      var snippet = new skyscanner.snippets.SearchPanelControl();
+      snippet.setShape("skyscraper");
+      snippet.setCulture("en-GB");
+      snippet.setCurrency("USD");
+      snippet.setProduct("flights", "1");
+      snippet.setProduct("hotels", "2");
+      snippet.setProduct("carhire", "3");
 
-        snippet.draw(document.getElementById("snippet_searchpanel"));
-      }
-      skyscanner.setOnLoadCallback(main);
-      </script>
-    </div>
+      snippet.draw(document.getElementById("snippet_searchpanel"));
+    }
+    skyscanner.setOnLoadCallback(main);
+    </script>
+    <div id="snippet_searchpanel" style="width: auto; height:auto;"></div>
     <div class="col sm12 m5">MAP AREA</div>
   </div>
   <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initMap">
