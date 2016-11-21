@@ -2,73 +2,73 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Travel</title>
-  <!-- Animate.css CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <!-- jQuery CDN -->
-  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-  <!-- Materialize CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" integrity="sha256-3AnlRNIdX11hf3yyjAb12b2Tac0VmZxGxpVRURyJIAw=" crossorigin="anonymous" />
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-              <script type="text/javascript" src="OAuth.js"></script>
-            <script type="text/javascript" src="SHA1.js"></script>
+    <meta charset="UTF-8">
+    <title>Travel</title>
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <!-- Materialize CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" integrity="sha256-3AnlRNIdX11hf3yyjAb12b2Tac0VmZxGxpVRURyJIAw=" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script type="text/javascript" src="OAuth.js"></script>
+    <script type="text/javascript" src="SHA1.js"></script>
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav class="fixed-nav-bar">
-    <div class="nav-wrapper teal lighten-4 ">
-      <a href="#" class="brand-logo">Logo</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="destination.html">Destination</a></li>
-        <li><a href="collapsible.html">Login</a></li>
-      </ul>
+    <!-- Navbar -->
+    <nav class="fixed-nav-bar">
+        <div class="nav-wrapper teal lighten-4 ">
+            <a href="#" class="brand-logo">Logo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destination.html">Destination</a></li>
+                <li><a href="collapsible.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Parallax container #1 -->
+    <div class="parallax-container">
+        <div class="parallax"><img src="assets/images/bali.jpeg"></div>
     </div>
-  </nav>
-  <!-- Parallax container #1 -->
-  <div class="parallax-container">
-    <div class="parallax"><img src="assets/images/bali.jpeg"></div>
-  </div>
-  <!-- Main content area (search box) -->
-  <div id="main-content">
-    <div class="container">
-      <blockquote>
-        <h3 class="teal-text teal-accent-4">Where should we go?</h3>
-      </blockquote>
-      <form class="input group" class="input-field" id="search-form">
-        <input type="text" class="form-control teal-text text-darken-3" id="location-input" placeholder="Enter a Destination">
-        <!-- Button triggers new location to be loaded -->
-        <button class="btn waves-effect waves-light btn-large" id="search" type="submit" name="action">Let's Go!</button>
-      </form>
-      <div class="progress">
-        <div class="indeterminate"></div>
-      </div>
+    <!-- Main content area (search box) -->
+    <div id="main-content">
+        <div class="container">
+            <blockquote>
+                <h3 class="teal-text teal-accent-4">Where should we go?</h3>
+            </blockquote>
+            <form class="input group" class="input-field" id="search-form">
+                <input type="text" class="form-control teal-text text-darken-3" id="location-input" placeholder="Enter a Destination">
+                <!-- Button triggers new location to be loaded -->
+                <button class="btn waves-effect waves-light btn-large" id="search" type="submit" name="action">Let's Go!</button>
+            </form>
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
     </div>
-  </div>
-  <!-- Added dynamically, this is the area where YouTube videos will display -->
-  <div id='vid-area'>
-    <div class="row" id='videos'>
+    <!-- Added dynamically, this is the area where YouTube videos will display -->
+    <div id='vid-area'>
+        <div class="row" id='videos'>
+        </div>
     </div>
-  </div>
-  <!-- Additional parallax content.  We will fill in other content between these images. -->
-  <div class="parallax-container">
-    <div class="parallax"><img src="assets/images/ocean.jpeg"></div>
-  </div>
-  <div id="snippet_searchpanel" style="width: auto; height:auto;"></div>
-  <div class="parallax-container">
-    <div class="parallax"><img src="assets/images/paris.jpeg"></div>
-  </div>
-  <div class="parallax-container">
-    <div class="parallax"><img src="assets/images/mountains.jpeg"></div>
-  </div>
-  <!-- My javascript file -->
-  <script src="assets/javascript/app.js"></script>
+    <!-- Additional parallax content.  We will fill in other content between these images. -->
+    <div class="parallax-container">
+        <div class="parallax"><img src="assets/images/ocean.jpeg"></div>
+    </div>
+    <div id="snippet_searchpanel" style="width: auto; height:auto;"></div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="assets/images/paris.jpeg"></div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="assets/images/mountains.jpeg"></div>
+    </div>
+    <!-- My javascript file -->
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
