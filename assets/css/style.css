@@ -28,3 +28,7 @@ body {
 .progress {
   margin-top: 20px;
 }
+
+#skyscanner-area {
+  background-color: #eeeeee;
+}
