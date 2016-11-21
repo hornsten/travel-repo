@@ -12,6 +12,9 @@ body {
   padding-bottom: 100px;
 }
 
+#map-area{
+  margin-top: 20px;
+}
 .fixed-nav-bar {
   position: fixed;
   top: 0;
