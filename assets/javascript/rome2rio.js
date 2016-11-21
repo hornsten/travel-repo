@@ -1,16 +1,8 @@
-$('input.autocomplete').autocomplete({
-    data: {
-        "Apple": null,
-        "Microsoft": null,
-        "Google": 'http://placehold.it/250x250'
-    }
-});
-
 $(document).ready(function() {
     // Function to get input value.
     $('#search-travel-info').click(function() {
         var originCity = $("#origin").val().trim();
-        var destinationCity = $("#autocomplete").val().trim();
+        var destinationCity = $("#destination").val().trim();
         if (originCity == '' || destinationCity == '') {
             alert("Enter Some Text In Input Field");
         } else {
@@ -37,7 +29,7 @@ $(document).ready(function() {
                     $('#travel-stats-' + i).append('<li>' + "Total Duration: " + response.routes[i].totalDuration + " minutes");
 
                 }
-
+                return false;
 
             })
         }

@@ -23,6 +23,7 @@
   <!-- Our CSS file -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
+<html>
 
 <body>
   <!-- Navbar -->
@@ -36,97 +37,27 @@
       </ul>
     </div>
   </nav>
-  <div class="row">
-    <script type="text/javascript">
-    //map script starts here 
-
-    var map;
-    var geocoder;
-
-    function initialize() {
-      var myLatlong = new google.maps.LatLng(48.856614, 2.3522219000000177);
-      var myOptions = {
-        zoom: 8,
-        center: myLatlong,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-      geocoder = new google.maps.Geocoder();
-    }
-
-    $(document).ready(function() {
-      $("#autocomplete").autocomplete({
-        source: function(request, response) {
-          geocoder.geocode({
-            'address': request.term
-          }, function(results) {
-            response($.map(results, function(item) {
-              return {
-                label: item.formatted_address,
-                value: item.formatted_address,
-                latitude: item.geometry.location.lat(),
-                longitude: item.geometry.location.lng(),
-              }
-
-            }))
-          })
-        },
-        select: function(event, ui) {
-          var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
-          marker = new google.maps.Marker({
-            map: map,
-            draggable: true
-          })
-          var stringvalue = 'latitude:<input type="text" value="' + ui.item.latitude + '" >Longitude:<input type="text" value="' + ui.item.longitude + '"><br/>';
-          $("#value").append(stringvalue);
-          marker.setPosition(location);
-          map.setCenter(location);
-
-
-        }
-
-      })
-
-    });
-    </script>
+  <div class="container">
     <div class="row">
-      <div class="col sm12 m5">
-        <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s6">
-                <input id="origin" type="text" class="submit">
-                <label for="origin">Enter City of Origin</label>
-              </div>
-              <div class="input-field col s6">
-                <input id="destination" type="text" class="submit">
-                <label for="destination">Enter Destination</label>
-              </div>
-            </div>
-          </form>
-          <div class="col s12 center-align">
-            <button class="btn waves-effect waves-light" id="search-travel-info" type="submit" name="action">Search for Travel Info
-            </button>
-          </div>
-          <div id="travel-info"></div>
-        </div>
-      </div>
-      <div class="col sm12 m7" id="map-area">MAP AREA
+      <form class="col s12">
         <label>Explore your favorite destination</label>
         <input type="text" id="autocomplete">
+      </form>
+    </div>
+    <div class="row">
+      <div class="col s12 m6">Yelp?</div>
+      <div class="col s12 m6" id="map-area">
         <div id="map_canvas" style="width:500px;height:500px;float:left; border: solid 3px; background-color: blue">
         </div>
       </div>
       <!--map closed-->
     </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initialize">
-    </script>
-    <script type="text/javascript" src="assets/javascript/tester.js"></script>
-    <script type="text/javascript" src="assets/javascript/map.js"></script>
-    <!-- <script type="text/javascript" src="assets/javascript/yelpapi.js">
-      </script>
-      -->=======
-    <script type="text/javascript" src="assets/javascript/rome2rio.js"></script>
+  </div>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initialize">
+  </script>
+  <script type="text/javascript" src="assets/javascript/tester.js"></script>
+  <script type="text/javascript" src="assets/javascript/map.js"></script>
+  <script type="text/javascript" src="assets/javascript/yelpapi.js"></script>
 </body>
 
 </html>

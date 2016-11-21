@@ -51,6 +51,16 @@
         <div class="indeterminate"></div>
       </div>
     </div>
+    <div class="col s12 m6">
+      <label for="origin">Enter City of Origin</label>
+      <input id="origin" type="text" class="submit">
+      <label for="destination">Enter Destination</label>
+      <input id="destination" type="text" class="submit">
+    </div>
+    <div class="col s12 center-align">
+      <button class="btn waves-effect waves-light" id="search-travel-info" type="submit" name="action">Search for Travel Info
+      </button>
+    </div>
   </div>
   <!-- Added dynamically, this is the area where YouTube videos will display -->
   <div id='vid-area'>
@@ -58,10 +68,10 @@
     </div>
   </div>
   <!-- Additional parallax content.  We will fill in other content between these images. -->
+  <div id="travel-info"></div>
   <div class="parallax-container">
     <div class="parallax"><img src="assets/images/ocean.jpeg"></div>
   </div>
-  <div id="snippet_searchpanel" style="width: auto; height:auto;"></div>
   <div class="parallax-container">
     <div class="parallax"><img src="assets/images/paris.jpeg"></div>
   </div>
@@ -70,6 +80,7 @@
   </div>
   <!-- My javascript file -->
   <script src="assets/javascript/app.js"></script>
+  <script type="text/javascript" src="assets/javascript/rome2rio.js"></script>
 </body>
 
 </html>
