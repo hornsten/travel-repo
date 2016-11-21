@@ -39,9 +39,11 @@
 
     function main() {
       var snippet = new skyscanner.snippets.SearchPanelControl();
-      snippet.setShape("skyscraper");
+      snippet.setShape("box400x400");
       snippet.setCulture("en-GB");
       snippet.setCurrency("USD");
+      snippet.setMarket("US");
+      snippet.setColourScheme("classicbluelight");
       snippet.setProduct("flights", "1");
       snippet.setProduct("hotels", "2");
       snippet.setProduct("carhire", "3");
@@ -50,8 +52,8 @@
     }
     skyscanner.setOnLoadCallback(main);
     </script>
-    <div id="snippet_searchpanel" style="width: auto; height:auto;"></div>
-    <div class="col sm12 m5">MAP AREA</div>
+    <div class="col sm12 m5" id="snippet_searchpanel" style="width: auto; height:auto;"></div>
+    <div class="col sm12 m7">MAP AREA</div>
   </div>
   <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initMap">
   </script> -->
