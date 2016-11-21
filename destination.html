@@ -6,17 +6,17 @@
   <title>Destination</title>
   <!-- Animate.css CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <!-- jQuery CDN -->
   <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-  <!-- Materialize CDN -->
-  <!-- Compiled and minified CSS -->
+  <!-- Compiled and minified Materialize CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <!-- Materialize CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" integrity="sha256-3AnlRNIdX11hf3yyjAb12b2Tac0VmZxGxpVRURyJIAw=" crossorigin="anonymous" />
+  <!-- Our CSS file -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <!-- My javascript files -->
-  <script src="assets/javascript/app.js"></script>
 </head>
 
 <body>
@@ -31,130 +31,27 @@
       </ul>
     </div>
   </nav>
-  <div class="row" id="#Destination-area">
-    <div class="col s12 m7">
-      <div class="col s12 m3">
-        <div class="card small">
-          <div class="card-image">
-            <img src="http://placekitten.com/g/200/300">
-            <span class="card-title">Card Title</span>
-          </div>
-          <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.</p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m3">
-        <div class="card small">
-          <div class="card-image">
-            <img src="http://placekitten.com/g/200/300">
-            <span class="card-title">Card Title</span>
-          </div>
-          <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.</p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m3">
-        <div class="card small">
-          <div class="card-image">
-            <img src="http://placekitten.com/g/200/300">
-            <span class="card-title">Card Title</span>
-          </div>
-          <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.</p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m3">
-        <div class="card small">
-          <div class="card-image">
-            <img src="http://placekitten.com/g/200/300">
-            <span class="card-title">Card Title</span>
-          </div>
-          <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.</p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
-        </div>
+  <div class="row">
+    <div class="col s12 m7" id="vid-display">
+      <!-- Artist Select Box -->
+      <form id="artist-form">
+        <!-- Label for Text Box -->
+        <label for="artist-input">Choose Your Artist</label>
+        <!-- Text Input Box -->
+        <input type="text" id="artist-input">
+        <br>
+        <!-- Submit Button -->
+        <input id="selectArtist" type="submit" value="GO!">
+      </form>
+      <!-- Spotify Player Goes Here -->
+      <div id="playerDiv">
       </div>
     </div>
     <div class="col sm12 m5">MAP AREA</div>
   </div>
-  <div class="row" id="#Destination-area-2">
-    <div class="col s12 m7">
-      <div class="col s12 m3">
-        <div class="card small">
-          <div class="card-image">
-            <img src="http://placekitten.com/g/200/300">
-            <span class="card-title">Card Title</span>
-          </div>
-          <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.</p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m3">
-        <div class="card small">
-          <div class="card-image">
-            <img src="http://placekitten.com/g/200/300">
-            <span class="card-title">Card Title</span>
-          </div>
-          <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.</p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m3">
-        <div class="card small">
-          <div class="card-image">
-            <img src="http://placekitten.com/g/200/300">
-            <span class="card-title">Card Title</span>
-          </div>
-          <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.</p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m3">
-        <div class="card small">
-          <div class="card-image">
-            <img src="http://placekitten.com/g/200/300">
-            <span class="card-title">Card Title</span>
-          </div>
-          <div class="card-content">
-            <p>I am a very simple card. I am good at containing small bits of information.</p>
-          </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col sm12 m5">MAP AREA</div>
-  </div>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initMap">
-  </script>
+  <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initMap">
+  </script> -->
+  <script src="assets/javascript/tester.js"></script>
 </body>
 
 </html>
