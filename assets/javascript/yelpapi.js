@@ -1,6 +1,6 @@
     function cb(data) {
         // console.log("cb: " + JSON.stringify(data));
-        console.log("==================cb data============");
+        // console.log("==================cb data============");
         for (i = 0; i < 6; i++) {
 
             var businessDiv = $('<div class="businessDiv">');
@@ -13,11 +13,11 @@
             var snippet = data.businesses[i].snippet_text;
             var isClosed = data.businesses[i].is_closed;
 
-            console.log(busName);
-            console.log(rating);
-            console.log(phone);
-            console.log(snippet);
-            console.log(isClosed);
+            // console.log(busName);
+            // console.log(rating);
+            // console.log(phone);
+            // console.log(snippet);
+            // console.log(isClosed);
             if (isClosed === "false") {
                 var pClosed = $('<p class= "isClosed">').text("Its Closed Now !!");
             } else {
@@ -31,7 +31,7 @@
             var pFour = $('<p class= "phone">').text(phone);
             var img = $('<img id="imgBus">');
             var img_url = data.businesses[i].image_url;
-            console.log("======= " + img_url);
+            // console.log("======= " + img_url);
             img.attr({
                 'src': img_url
             });
@@ -54,14 +54,6 @@
             businessDiv.append(pClosed);
             $('.yelpBusiness').prepend(businessDiv);
         }
-
-        // console.log("Parse"+ JSON.parse(data));
-        //div>")
-        // for(var i=0; i<data.businesses[0].categories.length; i++){
-        //                    var pOne = $('<p class= "category">').html( "Category: " + data.businesses[0].categories + "<br>");
-        //            }
-
-        //                    console.log("==================cb data============");
     }
 
     var auth = {
@@ -80,8 +72,9 @@
     };
 
     var terms = 'food';
-    //var near = $('#autocomplete');
-    var near = "japan";
+   // var near = $('#autocomplete');
+var near = "Paris";
+    // var near = $('#location-input');
     var accessor = {
         consumerSecret: auth.consumerSecret,
         tokenSecret: auth.accessTokenSecret
@@ -115,8 +108,8 @@
             'cache': true
         })
         .done(function(data, textStatus, jqXHR) {
-            console.log('success[' + data + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
-            console.log("***********jqhhr*********");
+            // console.log('success[' + data + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
+            // console.log("***********jqhhr*********");
         })
         .fail(function(jqXHR, textStatus, errorThrown) {
             console.log('error[' + errorThrown + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
