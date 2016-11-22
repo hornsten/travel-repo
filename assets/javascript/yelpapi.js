@@ -72,8 +72,8 @@
     };
 
     var terms = 'food';
-   // var near = $('#autocomplete');
-var near = "Paris";
+    // var near = $('#autocomplete');
+    var near = "Paris";
     // var near = $('#location-input');
     var accessor = {
         consumerSecret: auth.consumerSecret,

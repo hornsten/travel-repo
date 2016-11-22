@@ -23,18 +23,17 @@ $(document).ready(function() {
                 for (var i = 0; i < response.routes.length; i++) {
                     $('#travel-info').append('<div class="col s12 m6" id="info-' + i + '">');
                     $('#info-' + i).append('<ul class="collection with-header z-depth-5" id="ul-' + i + '">');
-                    $('#ul-' + i).append('<li class="collection-header teal lighten-1" id="' + i + '"><h4>' + response.routes[i].name)
+                    $('#ul-' + i).append('<li class="collection-header teal lighten-5 center-align" id="' + i + '"><h4>' + response.routes[i].name)
                         .append('<ul id="travel-stats-' + i + '">')
-                        .append('<li class="collection-item teal lighten-2" id="coll-' + i + '">Distance: ' + response.routes[i].distance + " miles")
-                        .append('<li class="collection-item teal lighten-3" id="coll-' + i + '">Current price: $' + response.routes[i].indicativePrices["0"].price + " USD")
-                        .append('<li class="collection-item teal lighten-4" id="coll-' + i + '">Price Range: $' + response.routes[i].indicativePrices["0"].priceLow + " - $" + response.routes["0"].indicativePrices["0"].priceHigh + " USD")
-                        .append('<li class="collection-item teal lighten-5" id="coll-' + i + '">Total Duration: ' + response.routes[i].totalDuration + " minutes");
-
+                        .append('<li class="collection-item teal lighten-4" id="coll-' + i + '">Distance: ' + response.routes[i].distance + " miles")
+                        .append('<li class="collection-item teal lighten-3" id="coll-' + i + '">Median price: $' + response.routes[i].indicativePrices["0"].price + " USD")
+                        .append('<li class="collection-item teal lighten-2" id="coll-' + i + '">Price Range: $' + response.routes[i].indicativePrices["0"].priceLow + " - $" + response.routes["0"].indicativePrices["0"].priceHigh + " USD")
+                        .append('<li class="collection-item teal lighten-1" id="coll-' + i + '">Total Duration: ' + response.routes[i].totalDuration + " minutes");
                 }
-                return false;
+            });
 
-            })
         }
+
     });
     $('.progress').hide();
     // Creates parallax effect
@@ -78,7 +77,8 @@ $(document).ready(function() {
         $.blockUI;
 
         //Empty the search field and keep results within the app
-        $('#location-input').val("");
+        $('#origin').val("");
+        $('#destination').val("");
         return false;
     })
 
