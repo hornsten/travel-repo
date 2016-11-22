@@ -1,7 +1,16 @@
 $(document).ready(function() {
 
-    // Function to get input value.
-    $('#search-travel-info').click(function() {
+    //Hides the progress bar 
+    $('.progress').hide();
+
+    // Creates parallax effect
+    $('.parallax').parallax();
+
+    // When "Click To Escape" button is pressed, get Prices/Options and YouTube Videos
+    $('#search-travel-info').on('click', getPrices);
+    $('#search-travel-info').on('click', getVideos);
+
+    function getPrices() {
         var originCity = $("#origin").val().trim();
         var destinationCity = $("#destination").val().trim();
         if (originCity == '' || destinationCity == '') {
@@ -24,7 +33,7 @@ $(document).ready(function() {
                 for (var i = 0; i < response.routes.length; i++) {
                     $('#travel-info').append('<div class="col s12 m6" id="info-' + i + '">');
                     $('#info-' + i).append('<ul class="collection with-header z-depth-5" id="ul-' + i + '">');
-                    $('#ul-' + i).append('<li class="collection-header teal-text teal-accent-4 teal lighten-5 center-align" id="' + i + '"><h4>' + response.routes[i].name)
+                    $('#ul-' + i).append('<li class="collection-header teal-text teal-accent-4 teal lighten-5 center-align" id="' + i + '"><h5>' + response.routes[i].name)
                         .append('<ul id="travel-stats-' + i + '">')
                         .append('<li class="collection-item teal lighten-4" id="coll-' + i + '">Distance: ' + response.routes[i].distance + " miles")
                         .append('<li class="collection-item teal lighten-3" id="coll-' + i + '">Median price: $' + response.routes[i].indicativePrices[0].price + " USD")
@@ -34,15 +43,10 @@ $(document).ready(function() {
             });
 
         }
+    };
 
-    });
-    $('.progress').hide();
-    // Creates parallax effect
-    $('.parallax').parallax();
 
-    // When button is pressed, grab the user input to start our search
-
-    $('#search-travel-info').on('click', function() {
+    function getVideos() {
         $('.progress').show();
         // API key and parameters
         var parameters = $('#destination').val().trim();
@@ -74,6 +78,7 @@ $(document).ready(function() {
             }
 
         });
+
         // Prevent user from seeing ugly blank video players
         $.blockUI;
 
@@ -81,7 +86,7 @@ $(document).ready(function() {
         $('#origin').val("");
         $('#destination').val("");
         return false;
-    })
+    };
 
 
 
