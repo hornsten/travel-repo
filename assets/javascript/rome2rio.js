@@ -1,5 +1,6 @@
 $(document).ready(function() {
-
+    $('.scrollspy').scrollSpy();
+    // -------------------------------Main Process-----------------------------
     //Hides the progress bar 
     $('.progress').hide();
 
@@ -10,11 +11,17 @@ $(document).ready(function() {
     $('#search-travel-info').on('click', getPrices);
     $('#search-travel-info').on('click', getVideos);
 
+    // ----------------------------Functions------------------------------
+
     function getPrices() {
         var originCity = $("#origin").val().trim();
         var destinationCity = $("#destination").val().trim();
         if (originCity == '' || destinationCity == '') {
-            Materialize.toast('Please tell me where you want to go!', 4000, 'rounded');
+
+            // Pops up a subtle reminder if the user leaves the inputs blank
+
+            Materialize.toast('Please tell me where you want to go!', 4000, 'red lighten-1 rounded');
+
         } else {
             $('#travel-info').empty();
             var pathway = 'http://free.rome2rio.com/api/1.4/json/Search?key=';
@@ -41,7 +48,6 @@ $(document).ready(function() {
                         .append('<li class="collection-item teal lighten-1" id="coll-' + i + '">Total Duration: ' + response.routes[i].totalDuration + " minutes");
                 }
             });
-
         }
     };
 
@@ -74,7 +80,6 @@ $(document).ready(function() {
                 $('#container-' + i).append('<object id="object-' + i + '" width="400" height="300" data="https://www.youtube.com/embed/' + response.items[i].id.videoId + '?controls=0"></object>');
                 $('#card-' + i).append('<div class="card-content" id="content-' + i + '">');
                 $('#content-' + i).append('<p class="teal-text text-darken-3">' + response.items[i].snippet.description);
-
             }
 
         });
@@ -85,9 +90,7 @@ $(document).ready(function() {
         //Empty the search field and keep results within the app
         $('#origin').val("");
         $('#destination').val("");
-        return false;
+        getVideos.preventDefault();
     };
-
-
 
 });
