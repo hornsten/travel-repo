@@ -16,6 +16,10 @@ body {
   padding-bottom: 100px;
 }
 
+.businessDiv{
+  border-bottom: grey solid 2px;
+  background-color: #b2dfdb;
+}
 #map-area {
   margin-top: 20px;
 }
