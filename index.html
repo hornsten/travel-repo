@@ -14,6 +14,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <!-- Materialize CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" integrity="sha256-3AnlRNIdX11hf3yyjAb12b2Tac0VmZxGxpVRURyJIAw=" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
   <script type="text/javascript" src="OAuth.js"></script>
   <script type="text/javascript" src="SHA1.js"></script>
@@ -51,26 +52,37 @@
         <div class="indeterminate"></div>
       </div>
     </div>
-    <div class="col s12 m6">
-      <label for="origin">Enter City of Origin</label>
-      <input id="origin" type="text" class="submit">
-      <label for="destination">Enter Destination</label>
-      <input id="destination" type="text" class="submit">
-    </div>
-    <div class="col s12 center-align">
-      <button class="btn waves-effect waves-light" id="search-travel-info" type="submit" name="action">Search for Travel Info
-      </button>
-    </div>
   </div>
   <!-- Added dynamically, this is the area where YouTube videos will display -->
   <div id='vid-area'>
-    <div class="row" id='videos'>
-    </div>
+    <div class="row" id='videos'></div>
   </div>
-  <!-- Additional parallax content.  We will fill in other content between these images. -->
-  <div id="travel-info"></div>
+  <!-- Parallax container #2  -->
   <div class="parallax-container">
     <div class="parallax"><img src="assets/images/ocean.jpeg"></div>
+  </div>
+  <!-- Travel options from Rome2Rio API -->
+  <div id="travel-options">
+    <div class="container">
+      <blockquote>
+        <h3 class="teal-text teal-accent-4">How Can We Get There?</h3>
+      </blockquote>
+      <form class="input group" class="input-field" id="travel-planner">
+        <label for="origin">Coming From</label>
+        <input id="origin" type="text" class="form-control teal-text text-darken-3" placeholder="Enter City Name">
+        <label for="destination">Going To</label>
+        <input id="destination" type="text" class="submit teal-text text-darken-3" placeholder="Enter City Name">
+      </form>
+      <button class="btn waves-effect waves-light" id="search-travel-info" type="submit" name="action">Search for Travel Info
+      </button>
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Added dynamically, this is the area where Rome2Rio Data will display -->
+  <div id="travel-info"></div>
+  </div>
   </div>
   <div class="parallax-container">
     <div class="parallax"><img src="assets/images/paris.jpeg"></div>

@@ -21,6 +21,7 @@ $(document).ready(function() {
             }).done(function(response) {
                 console.log(response);
                 for (var i = 0; i < response.routes.length; i++) {
+                    $('#travel-info').append('<ul class="collapsible" data-collapsible="accordion" id="ul-"' + i);
                     $('#travel-info').append('<h4>' + "Route name: " + response.routes[i].name);
                     $('#travel-info').append('<ul id="travel-stats-' + i + '">')
                     $('#travel-stats-' + i).append('<li>' + "Distance: " + response.routes[i].distance + " miles");

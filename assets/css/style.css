@@ -3,12 +3,15 @@
 }
 
 body {
-  background-image: url("../images/paris.jpeg");
+  background-image: url("../images/sky.jpeg");
   background-opacity: 0.3;
   padding-top: 70px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-#main-content {
+#main-content,
+#travel-options {
   padding-top: 100px;
   padding-bottom: 100px;
 }
@@ -26,7 +29,9 @@ body {
   height: 70px;
 }
 
-#location-input {
+#location-input,
+#origin,
+#destination {
   font-size: 30px;
 }
 
