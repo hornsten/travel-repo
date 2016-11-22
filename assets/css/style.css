@@ -16,10 +16,11 @@ body {
   padding-bottom: 100px;
 }
 
-.businessDiv{
+.businessDiv {
   border-bottom: grey solid 2px;
   background-color: #b2dfdb;
 }
+
 #map-area {
   margin-top: 20px;
 }
@@ -46,4 +47,14 @@ body {
 #rome2rio-input {
   float: left;
   display: inline;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
