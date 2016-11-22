@@ -1,10 +1,11 @@
 $(document).ready(function() {
+
     // Function to get input value.
     $('#search-travel-info').click(function() {
         var originCity = $("#origin").val().trim();
         var destinationCity = $("#destination").val().trim();
         if (originCity == '' || destinationCity == '') {
-            alert("Enter Some Text In Input Field");
+            Materialize.toast('Please tell me where you want to go!', 4000, 'rounded');
         } else {
             $('#travel-info').empty();
             var pathway = 'http://free.rome2rio.com/api/1.4/json/Search?key=';
