@@ -10,20 +10,23 @@ var config = {
 firebase.initializeApp(config);
 
 //Get Elements
-var txtEmail = document.getElementById('txtEmail');
-var txtPassword = document.getElementById('txtPassword');
-var btnLogin = document.getElementById('btnLogin');
-var btnSignUp = document.getElementById('btnSignUp');
-var btnLogout = document.getElementById('btnLogout');
+var txtEmail = $('#txtEmail');
+var txtPassword = $('#txtPassword');
+var btnLogin = $('#btnLogin');
+var btnSignUp = $('#btnSignUp');
+var btnLogout = $('#btnLogout');
+
+btnLogin.show();
+btnLogout.hide();
 
 //Add login event
 
-btnLogin.addEventListener('click', function() {
+btnLogin.on('click', function() {
 
     //get email and pass
 
-    var email = txtEmail.value;
-    var pass = txtPassword.value;
+    var email = txtEmail.val().trim();
+    var pass = txtPassword.val().trim();
     var auth = firebase.auth();
 
     // Sign In
@@ -34,21 +37,23 @@ btnLogin.addEventListener('click', function() {
         console.log(errorCode);
         console.log(errorMessage);
 
-    });
 
+    });
+    email.val("");
+    pass.val("");
 
 });
 
-btnSignUp.addEventListener('click', function() {
+btnSignUp.on('click', function() {
 
     //get email and pass
-
-    var email = txtEmail.value;
-    var pass = txtPassword.value;
+    var email = txtEmail.val().trim();
+    var pass = txtPassword.val().trim();
     var auth = firebase.auth();
 
     // Sign In
     var promise = firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error) {
+
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -57,7 +62,7 @@ btnSignUp.addEventListener('click', function() {
     });
 });
 
-btnLogout.addEventListener('click', function() {
+btnLogout.on('click', function() {
 
     firebase.auth().signOut();
 });
@@ -67,10 +72,10 @@ btnLogout.addEventListener('click', function() {
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
-        btnLogout.classList.remove('hide');
+        btnLogout.show();
         console.log(user);
     } else {
         console.log("user not logged in");
-        btnLogout.classList.add('hide');
+        btnLogout.hide();
     }
 });
