@@ -8,9 +8,11 @@ $(document).ready(function() {
     $('.parallax').parallax();
 
     // When "Click To Escape" button is pressed, get Prices/Options and YouTube Videos
-    $('#search-travel-info').on('click', getPrices);
-    $('#search-travel-info').on('click', getPlaceInfo);
-    $('#search-travel-info').on('click', getVideos);
+    $('#search-place-info').on('click', getPrices);
+    $('#search-place-info').on('click', getPlaceInfo);
+    $('#search-place-info').on('click', getVideos);
+    $('#origin').val("");
+    $('#destination').val("");
 
     // ----------------------------Functions------------------------------
 
@@ -50,6 +52,7 @@ $(document).ready(function() {
                 }
             });
         }
+
     };
 
     function getPlaceInfo() {
@@ -76,9 +79,11 @@ $(document).ready(function() {
                 $('#article').html($(blurb).find('p'));
 
             },
-            error: function(errorMessage) {}
-        });
+            error: function(errorMessage) {
 
+                $('#blurb').html("There is no information available for that city");
+            }
+        });
     };
 
 
@@ -118,8 +123,7 @@ $(document).ready(function() {
         $.blockUI;
 
         //Empty the search field and keep results within the app
-        $('#origin').val("");
-        $('#destination').val("");
+
         // getVideos.preventDefault();
     };
 });
