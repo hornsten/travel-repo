@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Travel</title>
+  <title>Login</title>
   <!-- Animate.css CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <!-- jQuery CDN -->
@@ -23,6 +23,22 @@
 
 <body>
   <div class="container">
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>Your Adventure Starts Here</h4>
+        <input id="txtEmail" type="email" placeholder="Email">
+        <input id="txtPassword" type="password" placeholder="Password">
+        <button id="btnLogin" class="btn btn-action">Log In</button>
+        <button id="btnSignUp" class="btn btn-secondary">Sign Up</button>
+        <button id="btnLogout" class="btn btn-action">Log Out</button>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">I'd rather stay home</a>
+      </div>
+    </div>
     <input id="txtEmail" type="email" placeholder="Email">
     <input id="txtPassword" type="password" placeholder="Password">
     <button id="btnLogin" class="btn btn-action">Log In</button>
