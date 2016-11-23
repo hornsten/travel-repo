@@ -3,25 +3,31 @@ $(document).ready(function() {
     // -------------------------------Main Process-----------------------------
     //Hides the progress bar 
     $('.progress').hide();
+    $('#contents').hide();
 
     // Creates parallax effect
     $('.parallax').parallax();
 
     $('.scrollspy').scrollSpy();
 
-    // When "Click To Escape" button is pressed, get Prices/Options and YouTube Videos
-    $('#search-place-info').on('click', getPrices);
+    // When "Click To Escape" button is pressed, get Information, Travel Options and YouTube Videos
+    $('#search-place-info').on('click', getTravelOptions);
     $('#search-place-info').on('click', getPlaceInfo);
     $('#search-place-info').on('click', function() {
 
         getVideos();
+        // empties input fields
         $('#origin').val("");
         $('#destination').val("");
+
+        // reveals table of contents
+        $('#contents').show();
+
     });
 
     // ----------------------------Functions------------------------------
 
-    function getPrices() {
+    function getTravelOptions() {
         var originCity = $("#origin").val().trim();
         var destinationCity = $("#destination").val().trim();
         if (originCity == '' || destinationCity == '') {
@@ -131,4 +137,5 @@ $(document).ready(function() {
 
         // getVideos.preventDefault();
     };
+
 });

@@ -39,14 +39,13 @@
   </div>
   <!-- Main content area (search box) -->
   <div id="travel-options">
-    <div class="col hid-on-small-only m3 l2">
-      <div class="toc-wrapper pinned" style="top: 300px;">
+    <!-- Table of Contents Scrollspy -->
+    <div class="col hide-on-small-only m3 l2">
+      <div class="toc-wrapper pinned" id="contents" style="top: 300px;">
         <ul class="section table-of-contents">
-          <li>
-            <a href="#article" class="active">Info</a>
-          </li>
-          <li> <a href="#vid-area" class>Videos</a></li>
-          <li> <a href="#travel-info" class=>Prices</a></li>
+          <li><a href="#article" class="active">Info</a></li>
+          <li><a href="#vid-area" class>Videos</a></li>
+          <li><a href="#travel-info" class>Getting There</a></li>
         </ul>
       </div>
     </div>
@@ -66,13 +65,15 @@
         <div class="indeterminate"></div>
       </div>
     </div>
-    <!-- Added dynamically, this is the area where Rome2Rio Data will display -->
+    <!-- Added dynamically, this is the area where Travel Data will display -->
     <div class="container">
+      <!-- Wiki Article -->
       <div id="article" class="section scrollspy"></div>
-      <div id="otherWikiArticle"></div>
+      <!-- YouTube Videos -->
       <div id="vid-area" class="section scrollspy">
         <div class="row" id='videos'></div>
       </div>
+      <!-- Travel Options from Rome2Rio API -->
       <div class="row" id="travel-info"></div>
     </div>
   </div>
