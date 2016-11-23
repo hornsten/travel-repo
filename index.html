@@ -39,6 +39,17 @@
   </div>
   <!-- Main content area (search box) -->
   <div id="travel-options">
+    <div class="col hid-on-small-only m3 l2">
+      <div class="toc-wrapper pinned" style="top: 300px;">
+        <ul class="section table-of-contents">
+          <li>
+            <a href="#article" class="active">Info</a>
+          </li>
+          <li> <a href="#vid-area" class>Videos</a></li>
+          <li> <a href="#travel-info" class=>Prices</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="container">
       <blockquote>
         <h3 class="teal-text teal-accent-4">Where Should We Go?</h3>
@@ -57,9 +68,9 @@
     </div>
     <!-- Added dynamically, this is the area where Rome2Rio Data will display -->
     <div class="container">
-      <div id="article"></div>
+      <div id="article" class="section scrollspy"></div>
       <div id="otherWikiArticle"></div>
-      <div id='vid-area'>
+      <div id="vid-area" class="section scrollspy">
         <div class="row" id='videos'></div>
       </div>
       <div class="row" id="travel-info"></div>

@@ -7,12 +7,17 @@ $(document).ready(function() {
     // Creates parallax effect
     $('.parallax').parallax();
 
+    $('.scrollspy').scrollSpy();
+
     // When "Click To Escape" button is pressed, get Prices/Options and YouTube Videos
     $('#search-place-info').on('click', getPrices);
     $('#search-place-info').on('click', getPlaceInfo);
-    $('#search-place-info').on('click', getVideos);
-    $('#origin').val("");
-    $('#destination').val("");
+    $('#search-place-info').on('click', function() {
+
+        getVideos();
+        $('#origin').val("");
+        $('#destination').val("");
+    });
 
     // ----------------------------Functions------------------------------
 
