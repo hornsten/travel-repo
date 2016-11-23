@@ -16,6 +16,7 @@ $(document).ready(function() {
     $('#search-place-info').on('click', function() {
 
         getVideos();
+
         // empties input fields
         $('#origin').val("");
         $('#destination').val("");
@@ -51,7 +52,20 @@ $(document).ready(function() {
                 method: 'GET'
             }).done(function(response) {
                 console.log(response);
+
+
+
                 for (var i = 0; i < response.routes.length; i++) {
+
+                    // Converts duration of trip to hours
+                    const getTime = (min) => {
+                        var minutes = min % 60;
+                        var u = minutes ? (minutes.toString() + ' minutes') : "";
+
+                        var time = (min / 60).toFixed() + " hours " + u;
+                        return time;
+                    };
+
                     $('#travel-info').append('<div class="col s12 m6" id="info-' + i + '">');
                     $('#info-' + i).append('<ul class="collection with-header z-depth-5" id="ul-' + i + '">');
                     $('#ul-' + i).append('<li class="collection-header teal-text teal-accent-4 teal lighten-5 center-align" id="' + i + '"><h5>' + response.routes[i].name)
@@ -59,8 +73,10 @@ $(document).ready(function() {
                         .append('<li class="collection-item teal lighten-4" id="coll-' + i + '">Distance: ' + response.routes[i].distance + " miles")
                         .append('<li class="collection-item teal lighten-3" id="coll-' + i + '">Median price: $' + response.routes[i].indicativePrices[0].price + " USD")
                         .append('<li class="collection-item teal lighten-2" id="coll-' + i + '">Price Range: $' + response.routes[i].indicativePrices[0].priceLow + " - $" + response.routes[i].indicativePrices[0].priceHigh + " USD")
-                        .append('<li class="collection-item teal lighten-1" id="coll-' + i + '">Total Duration: ' + response.routes[i].totalDuration + " minutes");
+                        .append('<li class="collection-item teal lighten-1" id="coll-' + i + '">Total Duration: ' + getTime(response.routes[i].totalDuration));
+
                 }
+
             });
         }
 
@@ -92,7 +108,7 @@ $(document).ready(function() {
             },
             error: function(errorMessage) {
 
-                $('#blurb').html("There is no information available for that city");
+                $('#article').html("We have no information available for that city");
             }
         });
     };
