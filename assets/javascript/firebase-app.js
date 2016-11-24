@@ -1,4 +1,4 @@
-// Initialize Firebase
+//Initialize Firebase
 
 var config = {
     apiKey: "AIzaSyDf9fnuCfrXVVBNQu4L2FTw_C1kLRrwZ1g",
@@ -7,20 +7,6 @@ var config = {
     storageBucket: "travel-repo.appspot.com",
     messagingSenderId: "410921328144"
 };
-
-$('.modal').modal({
-    dismissible: true, // Modal can be dismissed by clicking outside of the modal
-    opacity: .5, // Opacity of modal background
-    in_duration: 300, // Transition in duration
-    out_duration: 200, // Transition out duration
-    starting_top: '4%', // Starting top style attribute
-    ending_top: '10%', // Ending top style attribute
-    ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-
-        console.log(modal, trigger);
-    },
-    complete: function() { window.location = 'index.html'; } // Callback for Modal close
-});
 
 firebase.initializeApp(config);
 
@@ -34,6 +20,22 @@ var btnLogout = $('#btnLogout');
 btnLogin.show();
 btnLogout.hide();
 
+// Modal
+
+$('.modal').modal({
+    dismissible: true, // Modal can be dismissed by clicking outside of the modal
+    opacity: .5, // Opacity of modal background
+    in_duration: 300, // Transition in duration
+    out_duration: 200, // Transition out duration
+    starting_top: '4%', // Starting top style attribute
+    ending_top: '10%', // Ending top style attribute
+    ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+
+        console.log(modal, trigger);
+    },
+    complete: function() {} // Callback for Modal close
+});
+
 //Add login event
 
 btnLogin.on('click', function() {
@@ -46,14 +48,17 @@ btnLogin.on('click', function() {
 
     // Sign In
     var promise = firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
-        // Handle Errors here.window.location = 'index.html';
+        // Handle Errors here.
+
         var errorCode = error.code;
         var errorMessage = error.message;
-        alert(errorCode);
-        alert(errorMessage);
+        console.log(errorCode);
+        $('#user-message').append(errorMessage + " Please create an account.");
+
 
     });
-
+    txtEmail.val("");
+    txtPassword.val("");
 
 });
 
@@ -67,20 +72,19 @@ btnSignUp.on('click', function() {
     // Sign In
     var promise = firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error) {
 
-        window.location = 'index.html';
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage);
-
+        $('#user-message').html(errorCode);
+        $('#user-message').html(errorMessage);
     });
-    window.location = 'index.html';
+
 });
 
 btnLogout.on('click', function() {
 
     firebase.auth().signOut();
+    $('#user-message').html(' You have signed out.');
 });
 
 //Add real-time authentication listener
@@ -90,8 +94,9 @@ firebase.auth().onAuthStateChanged(function(user) {
         // User is signed in.
         btnLogout.show();
         console.log(user);
+        $('#user-message').html('You are signed in. ');
     } else {
-        console.log("user not logged in");
+        $('#user-message').html("You are not signed in. ");
         btnLogout.hide();
     }
 });

@@ -95,7 +95,19 @@ $(document).ready(function() {
     };
 
     function getPlaceInfo() {
-        var place = $("#destination").val();
+
+        //Converts user input to Title Case so that Wiki article can be found
+
+        function titleCase(str) {
+            return str.toLowerCase().split(' ').map(function(word) {
+                return (word.charAt(0).toUpperCase() + word.slice(1));
+            }).join(' ');
+        }
+
+        var place = titleCase($("#destination").val());
+
+        // Makes a call to Wikipedia API
+
         $.ajax({
             type: "GET",
             url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + place + "&callback=?",
@@ -107,7 +119,7 @@ $(document).ready(function() {
                 var markup = data.parse.text["*"];
                 var blurb = $('<div id="blurb"></div>').html(markup);
 
-                // remove links as they will not work
+                // remove links, as they will not work
                 blurb.find('a').each(function() { $(this).replaceWith($(this).html()); });
 
                 // remove any references
@@ -127,7 +139,6 @@ $(document).ready(function() {
             }
         });
     };
-
 
     function getVideos() {
         $('.progress').show();
