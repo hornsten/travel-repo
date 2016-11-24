@@ -67,13 +67,13 @@ $(document).ready(function() {
                     };
 
                     $('#travel-info').append('<div class="col s12 m6" id="info-' + i + '">');
-                    $('#info-' + i).append('<ul class="collection with-header z-depth-5" id="ul-' + i + '">');
-                    $('#ul-' + i).append('<li class="collection-header teal-text teal-accent-4 teal lighten-5 center-align" id="' + i + '"><h5>' + response.routes[i].name)
+                    $('#info-' + i).append('<ul class="collection with-header z-depth-4" id="ul-' + i + '">');
+                    $('#ul-' + i).append('<li class="collection-header teal-text teal-accent-4 grey lighten-5 center-align" id="' + i + '"><h5>' + response.routes[i].name)
                         .append('<ul id="travel-stats-' + i + '">')
-                        .append('<li class="collection-item teal lighten-4" id="coll-' + i + '">Distance: ' + response.routes[i].distance + " miles")
-                        .append('<li class="collection-item teal lighten-3" id="coll-' + i + '">Median price: $' + response.routes[i].indicativePrices[0].price + " USD")
-                        .append('<li class="collection-item teal lighten-2" id="coll-' + i + '">Price Range: $' + response.routes[i].indicativePrices[0].priceLow + " - $" + response.routes[i].indicativePrices[0].priceHigh + " USD")
-                        .append('<li class="collection-item teal lighten-1" id="coll-' + i + '">Total Duration: ' + getTime(response.routes[i].totalDuration));
+                        .append('<li class="collection-item grey lighten-4" id="coll-' + i + '">Distance: ' + response.routes[i].distance + " miles")
+                        .append('<li class="collection-item grey lighten-3" id="coll-' + i + '">Median price: $' + response.routes[i].indicativePrices[0].price + " USD")
+                        .append('<li class="collection-item grey lighten-2" id="coll-' + i + '">Price Range: $' + response.routes[i].indicativePrices[0].priceLow + " - $" + response.routes[i].indicativePrices[0].priceHigh + " USD")
+                        .append('<li class="collection-item grey lighten-1" id="coll-' + i + '">Total Duration: ' + getTime(response.routes[i].totalDuration));
 
                 }
 
@@ -137,7 +137,7 @@ $(document).ready(function() {
             for (var i = 0; i < response.items.length; i++) {
 
                 $('#videos').append('<div class="col s12 m4" id="col-' + i + '">');
-                $('#col-' + i).append('<div class="card center medium" style="border-radius:2%" id="card-' + i + '">');
+                $('#col-' + i).append('<div class="card center medium z-depth-4" style="border-radius:2%" id="card-' + i + '">');
                 $('#card-' + i).append('<div class="video-container materialboxed" id="container-' + i + '">');
                 $('#container-' + i).append('<object id="object-' + i + '" width="400" height="300" data="https://www.youtube.com/embed/' + response.items[i].id.videoId + '?controls=0"></object>');
                 $('#card-' + i).append('<div class="card-content" id="content-' + i + '">');

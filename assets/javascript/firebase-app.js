@@ -16,10 +16,10 @@ $('.modal').modal({
     starting_top: '4%', // Starting top style attribute
     ending_top: '10%', // Ending top style attribute
     ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
-        alert("Ready");
+
         console.log(modal, trigger);
     },
-    complete: function() { alert('Closed'); } // Callback for Modal close
+    complete: function() { window.location = 'index.html'; } // Callback for Modal close
 });
 
 firebase.initializeApp(config);
@@ -46,12 +46,11 @@ btnLogin.on('click', function() {
 
     // Sign In
     var promise = firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
-        // Handle Errors here.
+        // Handle Errors here.window.location = 'index.html';
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage);
-
+        alert(errorCode);
+        alert(errorMessage);
 
     });
 
@@ -68,12 +67,15 @@ btnSignUp.on('click', function() {
     // Sign In
     var promise = firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error) {
 
+        window.location = 'index.html';
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
+
     });
+    window.location = 'index.html';
 });
 
 btnLogout.on('click', function() {
