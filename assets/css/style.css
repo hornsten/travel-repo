@@ -30,6 +30,10 @@
   padding-bottom: 0;
 }
 
+#brand-logo {
+  font-size: 100px;
+}
+
 p {
   color: #00695c;
   font-size: 16px;

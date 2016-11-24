@@ -65,8 +65,6 @@ $(document).ready(function() {
             }).done(function(response) {
                 console.log(response);
 
-
-
                 for (var i = 0; i < response.routes.length; i++) {
 
                     // Converts duration of trip to hours
@@ -80,19 +78,36 @@ $(document).ready(function() {
 
                     $('#travel-info').append('<div class="col s12 m6" id="info-' + i + '">');
                     $('#info-' + i).append('<ul class="collection with-header z-depth-4" id="ul-' + i + '">');
-                    $('#ul-' + i).append('<li class="collection-header teal-text teal-accent-4 grey lighten-5 center-align" id="' + i + '"><h5>' + response.routes[i].name)
-                        .append('<ul id="travel-stats-' + i + '">')
+                    $('#ul-' + i).append('<li class="collection-header teal-text teal-accent-4 grey lighten-5 center-align" id="' + i + '"><h5>' + response.routes[i].name);
+
+                    if (response.routes[i].name.includes("Fly")) {
+
+                        $('#' + i).prepend('<i class="material-icons" style="font-size: 30px;">airplanemode_active</i>')
+                    } else if (response.routes[i].name.includes("Train")) {
+
+                        $('#' + i).prepend('<i class="material-icons" style="font-size: 30px;">train</i>')
+                    } else if (response.routes[i].name.includes("Bus")) {
+
+                        $('#' + i).prepend('<i class="material-icons" style="font-size: 30px;">directions_bus</i>')
+                    } else if (response.routes[i].name.includes("Drive")) {
+
+                        $('#' + i).prepend('<i class="material-icons" style="font-size: 30px;">drive_eta</i>')
+                    }
+
+                    $('#ul-' + i).append('<ul id="travel-stats-' + i + '">')
                         .append('<li class="collection-item grey lighten-4" id="coll-' + i + '">Distance: ' + response.routes[i].distance + " miles")
                         .append('<li class="collection-item grey lighten-3" id="coll-' + i + '">Median price: $' + response.routes[i].indicativePrices[0].price + " USD")
                         .append('<li class="collection-item grey lighten-2" id="coll-' + i + '">Price Range: $' + response.routes[i].indicativePrices[0].priceLow + " - $" + response.routes[i].indicativePrices[0].priceHigh + " USD")
                         .append('<li class="collection-item grey lighten-1" id="coll-' + i + '">Total Duration: ' + getTime(response.routes[i].totalDuration));
-
                 }
-
             });
-        }
 
-    };
+        }
+    }
+
+
+
+
 
     function getPlaceInfo() {
 
@@ -135,7 +150,7 @@ $(document).ready(function() {
             },
             error: function(errorMessage) {
 
-                $('#article').html("We have no information available for that city");
+                console.log(error);
             }
         });
     };
