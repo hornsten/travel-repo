@@ -68,6 +68,7 @@ btnSignUp.on('click', function() {
     var email = txtEmail.val().trim();
     var pass = txtPassword.val().trim();
     var auth = firebase.auth();
+    $('#user-message').html("Congratulations!  You have created an account.");
 
     // Sign In
     var promise = firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error) {
