@@ -78,12 +78,13 @@ h1 {
 
 #contents {
   z-index: 0;
-  top: 250px;
+  top: 500px;
   left: 10px;
 }
 
 body {
   background-image: url("../images/sky.jpeg");
+  background-size: cover;
   background-repeat: no-repeat;
   z-index: 1;
   display: flex;

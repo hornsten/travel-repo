@@ -8,11 +8,13 @@ $(document).ready(function() {
     // Creates parallax effect
     $('.parallax').parallax();
 
+    // Enables Table of Contents Scroller
     $('.scrollspy').scrollSpy();
 
-    // When "Click To Escape" button is pressed, get Information, Travel Options and YouTube Videos
-    $('#search-place-info').on('click', getTravelOptions);
+    // When "Click To Escape" button is pressed, get Place Info, Travel Options and YouTube Videos
+
     $('#search-place-info').on('click', getPlaceInfo);
+    $('#search-place-info').on('click', getTravelOptions);
     $('#search-place-info').on('click', function() {
 
         getVideos();
@@ -21,10 +23,20 @@ $(document).ready(function() {
         $('#origin').val("");
         $('#destination').val("");
 
-        // reveals table of contents
+        // reveals Table of Contents
         $('#contents').show();
 
     });
+
+    // Expands Wiki Article on hover, truncates when not being read
+
+    $('#article').hover(
+
+        function() { $(this).removeClass('truncate') },
+
+        function() {
+            $(this).addClass('truncate')
+        })
 
     // ----------------------------Functions------------------------------
 
@@ -100,6 +112,9 @@ $(document).ready(function() {
 
                 // remove any references
                 blurb.find('sup').remove();
+
+                // remove any images
+                blurb.find('img').remove();
 
                 // remove cite error
                 blurb.find('.mw-ext-cite-error').remove();
