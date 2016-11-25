@@ -8,8 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <!-- jQuery CDN -->
   <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-  <!-- Compiled and minified Materialize CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <!-- Materialize CDN -->
@@ -24,6 +22,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Our CSS file -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
 </head>
 <html>
 
@@ -35,10 +34,27 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="index.html">Home</a></li>
         <li><a href="destination.html">Destination</a></li>
-        <li><a href="firebase-auth.html">Login</a></li>
+        <li><a href="#modal1">Login</a></li>
       </ul>
     </div>
   </nav>
+  <!-- Modal Trigger -->
+  <!-- <a href="#modal1">Modal</a> -->
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4 class="teal-text text-darken-2">Your Adventure Starts Here</h4>
+      <input id="txtEmail" type="email" placeholder="Email">
+      <input id="txtPassword" type="password" placeholder="Password">
+      <button id="btnLogin" class="btn btn-action">Log In</button>
+      <button id="btnSignUp" class="btn btn-action btn-flat">Create an account</button>
+      <button id="btnLogout" class="btn btn-action">Log Out</button>
+      <p id="user-message"></p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">I'd rather stay home</a>
+    </div>
+  </div>
   <div class="container">
     <div class="row">
       <form class="col s12">
@@ -70,6 +86,7 @@
   <script type="text/javascript" src="assets/javascript/map.js"></script>
   <script type="text/javascript" src="assets/javascript/yelpapi.js"></script>
   <script type="text/javascript" src="assets/javascript/weather.js"></script>
+  <script src="assets/javascript/firebase-app.js"></script>
 </body>
 
 </html>
