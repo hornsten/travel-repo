@@ -3,7 +3,10 @@
         // console.log("==================cb data============");
         for (i = 0; i < 6; i++) {
 
-            var businessDiv = $('<div class="businessDiv">');
+            var businessDiv = $('<div class="businessDiv card horizontal hoverable">');
+            var cardImage = $('<div class="card-image">');
+            var cardStacked = $('<div class="card-stacked">');
+            var cardContent = $('<div class="card-content">');
 
             // Retrieves the Rating Data
             var busName = data.businesses[i].name;
@@ -19,16 +22,16 @@
             // console.log(snippet);
             // console.log(isClosed);
             if (isClosed === "false") {
-                var pClosed = $('<p class= "isClosed">').text("Its Closed Now !!");
+                var pClosed = $('<p class="isClosed teal-text text-darken-3">').text("Closed");
             } else {
-                pClosed = $('<p class= "isClosed">').text("Its Open Now !!");
+                pClosed = $('<p class="isClosed teal-text text-darken-3">').text("Open now");
             }
 
             // Creates an element to have the rating displayed
-            var pOne = $('<p class= "business">').text(busName);
-            var pThree = $('<p class= "snippet">').text("Recent Review:" + snippet);
-            var pTwo = $('<p class= "phone">').text(phone);
-            var pFour = $('<p class= "phone">').text(phone);
+            var pOne = $('<h5 class= "business teal-text text-darken-3">').html(busName);
+            var pThree = $('<p class= "snippet teal-text text-darken-3">').html(snippet);
+            // var pTwo = $('<p class="phone teal-text text-darken-3">').text(phone);
+            var pFour = $('<p class="phone teal-text text-darken-3">').text(phone);
             var img = $('<img id="imgBus">');
             var img_url = data.businesses[i].image_url;
             // console.log("======= " + img_url);
@@ -37,21 +40,23 @@
             });
 
 
-            // Displays the rrating
-
-            businessDiv.append(pOne);
-            businessDiv.append(img);
-            businessDiv.append(pThree);
-            businessDiv.append(pTwo);
+            // Displays the rating
 
             var imgRat = $('<img id="ratingurl">');
             imgRat.attr({
                 'src': data.businesses[i].rating_img_url,
             });
-            businessDiv.append(imgRat);
 
-            businessDiv.append(pFour);
-            businessDiv.append(pClosed);
+            businessDiv.append(cardImage);
+            cardImage.append(img);
+            businessDiv.append(cardStacked);
+            cardStacked.append(cardContent);
+            cardContent.append(pOne)
+                .append(imgRat)
+                .append(pFour)
+                .append(pClosed)
+                .append(pThree);
+
             $('.yelpBusiness').prepend(businessDiv);
         }
     }

@@ -44,8 +44,16 @@ h1 {
 }
 
 .businessDiv {
-  border-bottom: grey solid 2px;
-  background-color: #b2dfdb;
+  background-color: #eee;
+}
+
+.snippet,
+.isClosed {
+  font-size: 14px;
+}
+
+div.card-image {
+  background: #e0e0e0;
 }
 
 #map-area {
