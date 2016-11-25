@@ -18,6 +18,7 @@ var btnSignUp = $('#btnSignUp');
 var btnLogout = $('#btnLogout');
 
 btnLogin.show();
+btnSignUp.show();
 btnLogout.hide();
 
 // Modal
@@ -53,12 +54,10 @@ btnLogin.on('click', function() {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorCode);
-        $('#user-message').append(errorMessage + " Please create an account.");
+        $('#user-message').append(errorMessage);
 
 
     });
-    txtEmail.val("");
-    txtPassword.val("");
 
 });
 
@@ -68,7 +67,6 @@ btnSignUp.on('click', function() {
     var email = txtEmail.val().trim();
     var pass = txtPassword.val().trim();
     var auth = firebase.auth();
-    $('#user-message').html("Congratulations!  You have created an account.");
 
     // Sign In
     var promise = firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error) {
@@ -76,9 +74,12 @@ btnSignUp.on('click', function() {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
+        console.log(errorCode);
         $('#user-message').html(errorCode);
         $('#user-message').html(errorMessage);
     });
+    txtEmail.val("");
+    txtPassword.val("");
 
 });
 
@@ -93,11 +94,17 @@ btnLogout.on('click', function() {
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         // User is signed in.
+        btnLogin.hide();
+        btnSignUp.hide();
         btnLogout.show();
         console.log(user);
         $('#user-message').html('You are signed in. ');
+        txtEmail.val("");
+        txtPassword.val("");
     } else {
         $('#user-message').html("You are not signed in. ");
+        btnLogin.show();
+        btnSignUp.show();
         btnLogout.hide();
     }
 });
