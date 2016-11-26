@@ -10,6 +10,7 @@ var config = {
 
 firebase.initializeApp(config);
 
+var database = firebase.database().ref();;
 //Get Elements
 var txtEmail = $('#txtEmail');
 var txtPassword = $('#txtPassword');
@@ -57,9 +58,12 @@ btnLogin.on('click', function() {
         $('#user-message').append(errorMessage);
 
 
+
     });
 
 });
+
+
 
 btnSignUp.on('click', function() {
 
@@ -77,6 +81,7 @@ btnSignUp.on('click', function() {
         console.log(errorCode);
         $('#user-message').html(errorCode);
         $('#user-message').html(errorMessage);
+
     });
     txtEmail.val("");
     txtPassword.val("");
@@ -89,6 +94,7 @@ btnLogout.on('click', function() {
     $('#user-message').html(' You have signed out.');
 });
 
+
 //Add real-time authentication listener
 
 firebase.auth().onAuthStateChanged(function(user) {
@@ -97,10 +103,34 @@ firebase.auth().onAuthStateChanged(function(user) {
         btnLogin.hide();
         btnSignUp.hide();
         btnLogout.show();
+
         console.log(user);
         $('#user-message').html('You are signed in. ');
+
+        var email = txtEmail.val().trim();
+
+        database.child('users').push({
+
+            email: email
+
+        });
+
+        database.child('users').on("child_added", function(snapshot) {
+
+
+            // Change the HTML to reflect
+            console.log(snapshot);
+            // Handle the errors
+        }, function(errorObject) {
+
+            // console.log("Errors handled: " + errorObject.code);
+
+
+        });
+
         txtEmail.val("");
         txtPassword.val("");
+
     } else {
         $('#user-message').html("You are not signed in. ");
         btnLogin.show();

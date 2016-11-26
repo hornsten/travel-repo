@@ -26,7 +26,6 @@ $(document).ready(function() {
 
         // reveals Table of Contents
         $('#contents').show();
-
     });
 
     // Expands Wiki Article on hover, truncates when not being read
@@ -116,7 +115,7 @@ $(document).ready(function() {
                 $('#videos').append('<div class="col s12 m4" id="col-' + i + '">');
                 $('#col-' + i).append('<div class="card center medium z-depth-3 hoverable" style="border-radius:2%" id="card-' + i + '">');
                 $('#card-' + i).append('<div class="video-container" id="container-' + i + '">');
-                $('#container-' + i).append('<object id="object-' + i + '" width="400" height="300" data="https://www.youtube.com/embed/' + response.items[i].id.videoId + '?controls=0"></object>');
+                $('#container-' + i).append('<object id="object-' + i + '" width="400" height="300" data="https://www.youtube.com/embed/' + response.items[i].id.videoId + '?controls=1"></object>');
                 $('#card-' + i).append('<div class="card-content" id="content-' + i + '">');
                 $('#content-' + i).append('<p class="teal-text text-darken-3">' + response.items[i].snippet.description);
             }
