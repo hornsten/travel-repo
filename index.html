@@ -26,35 +26,40 @@
   <!-- Navbar -->
   <nav class="fixed-nav-bar">
     <div class="nav-wrapper teal lighten-4 ">
-      <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 60px;">cloud_circle</i></a>
+      <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 60px">cloud_circle</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="index.html">Home</a></li>
         <li><a href="destination.html">Destination</a></li>
         <li><a href="takemeaway.html">Take Me Away</a></li>
-        <li><a href="firebase-auth.html">Login</a></li>
+        <li><a href="#modal1">Login</a></li>
       </ul>
     </div>
   </nav>
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4 class="teal-text text-darken-2">Your Adventure Starts Here</h4>
-      <input id="txtEmail" type="email" placeholder="Email">
-      <input id="txtPassword" type="password" placeholder="Password">
-      <button id="btnLogin" class="btn btn-action">Log In</button>
-      <button id="btnSignUp" class="btn btn-action btn-flat">Create an account</button>
-      <button id="btnLogout" class="btn btn-action">Log Out</button>
-      <p id="user-message"></p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">I'd rather stay home</a>
-    </div>
-  </div>
+  
+  <!-- Modal Trigger -->
+  <!-- <a href="#modal1">Modal</a> -->
+   <!-- Modal Structure -->
+   <div id="modal1" class="modal">
+     <div class="modal-content">
+       <h4 class="teal-text text-darken-2">Your Adventure Starts Here</h4>
+       <input id="txtEmail" type="email" placeholder="Email">
+       <input id="txtPassword" type="password" placeholder="Password">
+       <button id="btnLogin" class="btn btn-action">Log In</button>
+       <button id="btnSignUp" class="btn btn-action btn-flat">Create an account</button>
+       <button id="btnLogout" class="btn btn-action">Log Out</button>
+       <p id="user-message"></p>
+     </div>
+     <div class="modal-footer">
+       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">I'd rather stay home</a>
+     </div>
+   </div>
+
   <!-- Parallax container #1 -->
   <div class="parallax-container valign-wrapper section scrollspy" id="title">
     <h1 class="grey-text text-lighten-4 valign center-block">travelbliss</h1>
     <div class="parallax" id="parallax-1"></div>
   </div>
+
   <!-- Main content area (search box) -->
   <div id="travel-options">
     <!-- Table of Contents Scrollspy -->
@@ -82,6 +87,7 @@
         <div class="indeterminate"></div>
       </div>
     </div>
+    
     <!-- Added dynamically, this is the area where Travel Data will display -->
     <div class="container">
       <!-- Wiki Article -->
@@ -114,7 +120,7 @@
             <li><a class="grey-text text-lighten-3" href="index.html">Home</a></li>
             <li><a class="grey-text text-lighten-3" href="destination.html">Destination</a></li>
             <li><a class="grey-text text-lighten-3" href="takemeaway.html">Take Me Away</a></li>
-            <li><a class="grey-text text-lighten-3" href="firebase-auth.html">Login</a></li>
+            <li><a class="grey-text text-lighten-3" href="#modal1">Login</a></li>
           </ul>
         </div>
       </div>
