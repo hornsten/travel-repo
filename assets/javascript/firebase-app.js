@@ -52,10 +52,12 @@ $(document).ready(function() {
         // Sign In
         var promise = firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
             // Handle Errors here.
-
+            $('#user-message').empty();
+            
             var errorCode = error.code;
             var errorMessage = error.message;
             console.log(errorCode);
+
             $('#user-message').append(errorMessage);
 
 
