@@ -20,10 +20,6 @@ $(document).ready(function() {
 
         getVideos();
 
-        // empties input fields
-        $('#origin').val("");
-        $('#destination').val("");
-
         // reveals Table of Contents
         $('#contents').show();
     });

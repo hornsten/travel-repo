@@ -78,8 +78,7 @@
 
     var terms = 'food';
     // var near = $('#autocomplete');
-    var near = "Paris";
-    // var near = $('#location-input');
+    var near = 'Paris';
     var accessor = {
         consumerSecret: auth.consumerSecret,
         tokenSecret: auth.accessTokenSecret
