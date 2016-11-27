@@ -106,17 +106,22 @@ $(document).ready(function() {
             console.log(user);
             $('#user-message').html('You are signed in. ');
             writeDatabase();
+            $('#login-status').html('Logout');
             txtEmail.val("");
             txtPassword.val("");
+
 
         } else {
             $('#user-message').html("You are not signed in. ");
             btnLogin.show();
             btnSignUp.show();
             btnLogout.hide();
+            $('#login-status').html('Login');
+
         }
     });
 
+    //Adds users to the database upon login or signup
     function writeDatabase() {
         var email = txtEmail.val().trim();
 
@@ -128,13 +133,39 @@ $(document).ready(function() {
 
         database.child('users').on("child_added", function(snapshot) {
 
-
             // Change the HTML to reflect
             console.log(snapshot);
             // Handle the errors
         }, function(errorObject) {
 
-            // console.log("Errors handled: " + errorObject.code);
+            console.log("Errors handled: " + errorObject.code);
+
+
+        });
+    }
+    $('#search-place-info').on('click', shareLocale);
+
+    function shareLocale() {
+        var locale = $("#destination").val().trim();
+
+        database.child('locale').set({
+
+            locale: locale
+
+        });
+
+        database.child('locale').on("value", function(localeSnap) {
+
+
+            // Change the HTML to reflect
+            console.log(localeSnap);
+            // empties input fields
+            $('#origin').val("");
+            $('#destination').val("");
+            // Handle the errors
+        }, function(errorObject) {
+
+            console.log("Errors handled: " + errorObject.code);
 
 
         });
