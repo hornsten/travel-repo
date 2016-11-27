@@ -159,6 +159,7 @@ $(document).ready(function() {
 
             // Change the HTML to reflect
             console.log(localeSnap);
+
             // empties input fields
             $('#origin').val("");
             $('#destination').val("");
