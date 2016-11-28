@@ -71,6 +71,7 @@
   //------------yelp auth ends----------
 
   $(document).ready(function() {
+
       $("#autocomplete").autocomplete({
           source: function(request, response) {
               geocoder.geocode({ 'address': request.term }, function(results) {
