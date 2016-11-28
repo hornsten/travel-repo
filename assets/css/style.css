@@ -114,8 +114,13 @@ footer.page-footer {
   width: 60%;
   background-color: #e6ffe6;
 }
+.temp{
+  font-size: 24px;
+}
 .weather-area{
   border-radius: 10px;
   border: solid 2px;
-  width: 40%;
+  width: 190px;
+
+  background-image: url("../images/weather.jpg");
 }

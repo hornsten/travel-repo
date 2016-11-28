@@ -205,11 +205,12 @@ $(".yelpBusiness").empty();
                   console.log(response);
 
                   // Transfer content to HTML
-                  $('.city').html("<h4>Weather Details</h4>");
+                  
+                  $(".temp").html("<h5>" + response.main.temp+ "</h5>");
+
                   $(".wind").html("Wind Speed: " + response.wind.speed);
                   $(".humidity").html("Humidity: " + response.main.humidity);
-                  $(".temp").html("Temperature (F) " + response.main.temp);
-
+                  
                   // Log the data in the console as well
                   console.log("Wind Speed: " + response.wind.speed);
                   console.log("Humidity: " + response.main.humidity);
