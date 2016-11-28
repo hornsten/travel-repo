@@ -14,7 +14,7 @@
 
   //Yelp dom display function
   function cb(data) {
-
+$(".yelpBusiness").empty();
       for (i = 0; i < 5; i++) {
 
           var businessDiv = $('<div class="businessDiv">');
@@ -102,7 +102,6 @@
               var terms = 'food';
               //ajax call for yelp
 
-
               var parameters = [];
               parameters.push(['term', terms]);
               parameters.push(['location', near]);
@@ -140,56 +139,55 @@
                   });
 
               //yelp  -- ends here
+
+
               // //-------------------News api-------------------------
-              // var authKey = "cf7b4e9977ef4c48a3e784039784debb";
-              // var queryURLBase = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=";
+              
+              $("#wellSection").empty();
+              var newsKey = "cf7b4e9977ef4c48a3e784039784debb";
+              console.log("news key "+ near);
+              var articleCounter=0;
+              var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newsKey + "&q=" +near;
 
-              // function runQuery(queryURL){
+                 $.ajax({url: queryURL, method: "GET"}) 
+                  .done(function(NYTData) {
 
-              //   // The AJAX function uses the URL and Gets the JSON data associated with it. The data then gets stored in the variable called: "NYTData"
-              //   $.ajax({url: queryURL, method: "GET"}) 
-              //     .done(function(NYTData) {
+                      for (var i=0; i<3; i++) {
+                      var wellSection = $("<div>");
+                        wellSection.addClass('well');
+                        wellSection.attr('id', 'articleWell-' + articleCounter)
+                        $('#wellSection').append(wellSection);
+                        if(NYTData.response.docs[i].headline != "null")
+                        {
+                          $('.newsTitle').html("Top news from "+near);
+                          $("#articleWell-"+ articleCounter).append('<h5 class="articleHeadline"><strong>   ' + NYTData.response.docs[i].headline.main + "</strong></h5>");
 
-              //         for (var i=0; i<3; i++) {
-              //         var wellSection = $("<div>");
-              //           wellSection.addClass('well');
-              //           wellSection.attr('id', 'articleWell-' + articleCounter)
-              //           $('#wellSection').append(wellSection);
-              //           if(NYTData.response.docs[i].headline != "null")
-              //           {
-              //             $("#articleWell-"+ articleCounter).append('<h3 class="articleHeadline"><span class="label label-primary">' + articleCounter + '</span><strong>   ' + NYTData.response.docs[i].headline.main + "</strong></h3>");
+                          // Log the first article's Headline to console.
+                          console.log(NYTData.response.docs[i].headline.main);
+                        }
 
-              //             // Log the first article's Headline to console.
-              //             console.log(NYTData.response.docs[i].headline.main);
-              //           }
+                        // If the article has a Byline include the headline in the HTML
+                        if( NYTData.response.docs[i].byline && NYTData.response.docs[i].byline.hasOwnProperty("original"))
+                        {
+                          $("#articleWell-"+ articleCounter).append('<p>' + NYTData.response.docs[i].byline.original + "</p>");
 
-              //           // If the article has a Byline include the headline in the HTML
-              //           if( NYTData.response.docs[i].byline && NYTData.response.docs[i].byline.hasOwnProperty("original"))
-              //           {
-              //             $("#articleWell-"+ articleCounter).append('<h5>' + NYTData.response.docs[i].byline.original + "</h5>");
+                          // Log the first article's Author to console.
+                          console.log(NYTData.response.docs[i].byline.original);
+                        }
 
-              //             // Log the first article's Author to console.
-              //             console.log(NYTData.response.docs[i].byline.original);
-              //           }
+                        // Then display the remaining fields in the HTML (Section Name, Date, URL)
+                        $("#articleWell-"+ articleCounter).append("<a href='" + NYTData.response.docs[i].web_url + "'>" + NYTData.response.docs[i].web_url + "</a>");
 
-              //           // Then display the remaining fields in the HTML (Section Name, Date, URL)
-              //           $("#articleWell-"+ articleCounter).append('<h5>Section: ' + NYTData.response.docs[i].section_name + "</h5>");
-              //           $("#articleWell-"+ articleCounter).append('<h5>' + NYTData.response.docs[i].pub_date + "</h5>");
-              //           $("#articleWell-"+ articleCounter).append("<a href='" + NYTData.response.docs[i].web_url + "'>" + NYTData.response.docs[i].web_url + "</a>");
-
-              //           // Log the remaining fields to console as well
-              //           console.log(NYTData.response.docs[i].pub_date);
-              //           console.log(NYTData.response.docs[i].section_name);
-              //           console.log(NYTData.response.docs[i].web_url);  
-              //       }//for loop
-              //     }); //done func
-              //  } //function runquery
-
-
-
+                        // Log the remaining fields to console as well
+                        console.log(NYTData.response.docs[i].pub_date);
+                        console.log(NYTData.response.docs[i].section_name);
+                        console.log(NYTData.response.docs[i].web_url);  
+                    }//for loop
+                  }); //done func
+               
               //----------------------------------------------------
 
-              //weatther
+              //weatther  
 
               var weatherKey = "ad7a1f849c0e46f75a5ff8a3f8560be8";
               console.log("weather " + near);
@@ -207,7 +205,7 @@
                   console.log(response);
 
                   // Transfer content to HTML
-                  $('.city').html("<h1>Weather Details</h1>");
+                  $('.city').html("<h4>Weather Details</h4>");
                   $(".wind").html("Wind Speed: " + response.wind.speed);
                   $(".humidity").html("Humidity: " + response.main.humidity);
                   $(".temp").html("Temperature (F) " + response.main.temp);
