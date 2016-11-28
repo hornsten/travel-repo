@@ -55,8 +55,8 @@ $(document).ready(function() {
 
             var errorCode = error.code;
             var errorMessage = error.message;
-            console.log(errorCode);
-            $('#user-message').append(errorMessage);
+            $('#user-message').html(errorCode);
+            $('#user-message').html(errorMessage);
 
         });
 
