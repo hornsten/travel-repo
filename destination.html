@@ -8,8 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <!-- jQuery CDN -->
   <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <!-- Materialize CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" integrity="sha256-3AnlRNIdX11hf3yyjAb12b2Tac0VmZxGxpVRURyJIAw=" crossorigin="anonymous" />
   <script type="text/javascript" src="assets/javascript/OAuth.js"></script>
@@ -56,17 +54,16 @@
   <div class="container">
     <div class="row">
       <form class="col s12">
-        
-        <label id="map-input-label"><h4>Explore your favorite destination</h4></label>
+        <label id="map-input-label">
+          <h4>Explore your favorite destination</h4></label>
         <input type="text" id="autocomplete" autofocus="autofocus">
       </form>
     </div>
     <div class="weather-area">
-    <div class="temp"></div>
+      <div class="temp"></div>
       <div class="city"></div>
       <div class="wind"></div>
       <div class="humidity"></div>
-      
     </div>
     <div class="row">
       <div class="col s12 m6">
@@ -78,28 +75,24 @@
         </div>
       </div>
       <!--map closed-->
-  <div class="row">
-    <div class="col-sm-12">
-    <br>
-      <div class="panel panel-primary">
-
-        <div class="panel-heading">
-          <h4 class="panel-title newsTitle"><strong><i class="fa fa-table"></i> </strong></h4>
-        </div>
-
-        <div class="panel-body" id="wellSection">
+      <div class="row">
+        <div class="col-sm-12">
+          <br>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="panel-title newsTitle"><strong><i class="fa fa-table"></i> </strong></h4>
+            </div>
+            <div class="panel-body" id="wellSection">
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-
-    </div>
-  </div>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initialize">
   </script>
-  <!-- <script type="text/javascript" src="assets/javascript/tester.js"></script>
- -->
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <script type="text/javascript" src="assets/javascript/map.js"></script>
   <script src="assets/javascript/firebase-app.js"></script>
 </body>
