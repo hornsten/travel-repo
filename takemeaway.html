@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Travel</title>
+  <title>Take Me Away</title>
   <!-- Animate.css CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <!-- jQuery CDN -->
@@ -14,10 +14,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <!-- Materialize CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" integrity="sha256-3AnlRNIdX11hf3yyjAb12b2Tac0VmZxGxpVRURyJIAw=" crossorigin="anonymous" />
+
+  <!-- Google Icons  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Our CSS file -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  <!-- Skyscanner API -->
+ <script type="text/javascript" src="//api.skyscanner.net/api.ashx?key=2a208cf3-bdbb-494f-b25e-ad293cada1d0"></script>
+
+  <!-- Our Javascript files -->
+  <script type="text/javascript" src="assets/javascript/takemeaway.js"></script>
   <script type="text/javascript" src="assets/javascript/OAuth.js"></script>
   <script type="text/javascript" src="assets/javascript/SHA1.js"></script>
+ 
+ 
+
 </head>
 
 <body>
@@ -29,28 +42,71 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="destination.html">Destination</a></li>
         <li><a href="takemeaway.html">Take Me Away</a></li>
-        <li><a href="firebase-auth.html">Login</a></li>
+        <li><a id="login-status" href="#modal1">Login</a></li>
       </ul>
     </div>
   </nav>
 
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4 class="teal-text text-darken-2">Your Adventure Starts Here</h4>
+      <input id="txtEmail" type="email" placeholder="Email">
+      <input id="txtPassword" type="password" placeholder="Password">
+      <button id="btnLogin" class="btn btn-action">Log In</button>
+      <button id="btnSignUp" class="btn btn-action btn-flat">Create an account</button>
+      <button id="btnLogout" class="btn btn-action">Log Out</button>
+      <p id="user-message"></p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">I'd rather stay home</a>
+    </div>
+  </div>
+
   <!-- Parallax container #1 -->
   <div class="parallax-container valign-wrapper section scrollspy" id="title">
-    <h1 class="blue-text text-lighten-5 valign center-block">ready to go?</h1>
-    <div class="parallax" id="parallax-1"></div>
+    <h1 class="grey-text text-lighten-5 valign center-block">ready to go?</h1>
+    <div class="parallax" id="parallax-3"></div>
   </div>
 
   <!--Content area-->
   
   <div class="container">
     
+    <div class="row">
+        <!-- Grey navigation panel -->
+        <div class="col s12 m4 l3">
+           <ul class="section table-of-contents">
+               <li><a id="flights">Flights</a></li>
+               <li><a id="cars">Rent A Car</a></li>
+               <li><a id="accommodation">Accommodation</a></li>
+               <li><a id="music">Roap Trip Music</a></li>
+             </ul>
+         </div>
+         
+         <!-- Teal page content  -->
+         <div class="container col s12 m8 l9" id="main-content">
+           <!--  <blockquote>
+               <h3 class="teal-text teal-accent-4">Get your flights on</h3>
+            </blockquote>
+            <div class="flight-info">
+              <div id="snippet_searchpanel" style="width: auto; height:auto;"></div>
+            </div>
+ 
+            <blockquote>
+               <h3 class="teal-text teal-accent-4">Need a car?</h3>
+            </blockquote>
+ 
+             <blockquote>
+               <h3 class="teal-text teal-accent-4">Stay here!</h3>
+            </blockquote>
+  
+             <blockquote>
+               <h3 class="teal-text teal-accent-4">Some music for the road</h3>
+            </blockquote> -->
+         </div>
 
-  </div>
-
-  <!-- Parallax container #2  -->
-  <div class="parallax-container valign-wrapper">
-    <h1 class="blue-text text-lighten-5 valign center-block">take me away</h1>
-    <div class="parallax" id="parallax-2"></div>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -68,7 +124,7 @@
             <li><a class="grey-text text-lighten-3" href="index.html">Home</a></li>
             <li><a class="grey-text text-lighten-3" href="destination.html">Destination</a></li>
             <li><a class="grey-text text-lighten-3" href="takemeaway.html">Take Me Away</a></li>
-            <li><a class="grey-text text-lighten-3" href="firebase-auth.html">Login</a></li>
+            <li><a class="grey-text text-lighten-3" href="#modal1">Login</a></li>
           </ul>
         </div>
       </div>
@@ -76,8 +132,7 @@
 
     <div class="footer-copyright">
       <div class="container">
-        © 2014 Copyright Text
-        <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        © 2016 Copyright Jessica Hornsten, Uyen Lam, and Mitali Naik
       </div>
     </div>
   </footer>

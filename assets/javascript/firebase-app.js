@@ -52,11 +52,20 @@ $(document).ready(function() {
         // Sign In
         var promise = firebase.auth().signInWithEmailAndPassword(email, pass).catch(function(error) {
             // Handle Errors here.
-
+            $('#user-message').empty();
+            
             var errorCode = error.code;
             var errorMessage = error.message;
+<<<<<<< HEAD
+            console.log(errorCode);
+
+            $('#user-message').append(errorMessage);
+
+
+=======
             $('#user-message').html(errorCode);
             $('#user-message').html(errorMessage);
+>>>>>>> 5575c0a0f3a91de4987bbf08b886c2eaf48394dd
 
         });
 
