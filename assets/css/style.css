@@ -78,6 +78,10 @@ div.card-image {
   margin-top: 20px;
 }
 
+#snippet_searchpanel {
+  float: right;
+}
+
 #rome2rio-input {
   float: left;
   display: inline;
@@ -85,7 +89,7 @@ div.card-image {
 
 #contents {
   z-index: 0;
-  top: 530px;
+  top: 510px;
   left: 10px;
 }
 
@@ -108,19 +112,21 @@ footer.page-footer {
   margin-top: 0;
   z-index: 3;
 }
-#wellSection{
+
+#wellSection {
   border: solid 2px;
   border-radius: 10px;
   width: 60%;
   background-color: #e6ffe6;
 }
-.temp{
+
+.temp {
   font-size: 24px;
 }
-.weather-area{
+
+.weather-area {
   border-radius: 10px;
   border: solid 2px;
   width: 190px;
-
   background-image: url("../images/weather.jpg");
 }
