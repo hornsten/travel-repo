@@ -108,3 +108,9 @@ footer.page-footer {
   margin-top: 0;
   z-index: 3;
 }
+#wellSection{
+  border: solid 2px;
+  border-radius: 10px;
+  width: 60%;
+  background-color: #e6ffe6;
+}
