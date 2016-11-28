@@ -56,17 +56,20 @@ $(document).ready(function() {
             
             var errorCode = error.code;
             var errorMessage = error.message;
+<<<<<<< HEAD
             console.log(errorCode);
 
             $('#user-message').append(errorMessage);
 
 
+=======
+            $('#user-message').html(errorCode);
+            $('#user-message').html(errorMessage);
+>>>>>>> 5575c0a0f3a91de4987bbf08b886c2eaf48394dd
 
         });
 
     });
-
-
 
     btnSignUp.on('click', function() {
 
@@ -108,7 +111,7 @@ $(document).ready(function() {
             console.log(user);
             $('#user-message').html('You are signed in. ');
             writeDatabase();
-            $('#login-status').html('Logout');
+            $('.login-status').html('Logout');
             txtEmail.val("");
             txtPassword.val("");
 
@@ -118,7 +121,7 @@ $(document).ready(function() {
             btnLogin.show();
             btnSignUp.show();
             btnLogout.hide();
-            $('#login-status').html('Login');
+            $('.login-status').html('Login');
 
         }
     });
@@ -136,7 +139,7 @@ $(document).ready(function() {
         database.child('users').on("child_added", function(snapshot) {
 
             // Change the HTML to reflect
-            console.log(snapshot);
+
             // Handle the errors
         }, function(errorObject) {
 
@@ -145,6 +148,8 @@ $(document).ready(function() {
 
         });
     }
+
+    //Shares user input to database so that multiple pages can access it
     $('#search-place-info').on('click', shareLocale);
 
     function shareLocale() {
@@ -160,7 +165,7 @@ $(document).ready(function() {
 
 
             // Change the HTML to reflect
-            console.log(localeSnap);
+            $('firebase-message').html(localeSnap.val());
 
             // empties input fields
             $('#origin').val("");

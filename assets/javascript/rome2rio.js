@@ -5,6 +5,7 @@ $(document).ready(function() {
     //Hides the progress bar 
     $('.progress').hide();
     $('#contents').hide();
+    $('#snippet_searchpanel').hide();
 
     // Creates parallax effect
     $('.parallax').parallax();
@@ -46,7 +47,7 @@ $(document).ready(function() {
             }).join(' ');
         }
 
-        var place = titleCase($("#destination").val());
+        var place = $("#destination").val().trim();
 
         // Makes a call to Wikipedia API
 
@@ -85,6 +86,7 @@ $(document).ready(function() {
             }
         });
     };
+
 
     function getVideos() {
         $('.progress').show();
@@ -127,6 +129,8 @@ $(document).ready(function() {
     };
 
     function getTravelOptions() {
+        $('#snippet_searchpanel').show();
+
         var originCity = $("#origin").val().trim();
         var destinationCity = $("#destination").val().trim();
         if (originCity == '' || destinationCity == '') {
@@ -162,7 +166,7 @@ $(document).ready(function() {
                         return time;
                     };
 
-                    $('#travel-info').append('<div class="col s12 m6" id="info-' + i + '">');
+                    $('#travel-info').append('<div class="col s12 m5 left-align" id="info-' + i + '">');
                     $('#info-' + i).append('<ul class="collection with-header z-depth-3 hoverable" id="ul-' + i + '">');
                     $('#ul-' + i).append('<li class="collection-header teal-text teal-accent-4 grey lighten-5 center-align" id="' + i + '"><h5>' + response.routes[i].name);
 
