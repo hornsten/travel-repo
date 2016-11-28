@@ -46,7 +46,7 @@ $(document).ready(function() {
             }).join(' ');
         }
 
-        var place = titleCase($("#destination").val());
+        var place = titleCase($("#autocomplete").val());
 
         // Makes a call to Wikipedia API
 
@@ -89,7 +89,7 @@ $(document).ready(function() {
     function getVideos() {
         $('.progress').show();
         // API key and parameters
-        var parameters = $('#destination').val().trim();
+        var parameters = $('#autocomplete').val().trim();
         var pathway = 'https://www.googleapis.com/youtube/v3/search?part=snippet&safesearch=strict&maxResults=6&length=short';
         var apiKey = '&key=AIzaSyDcpRXHyPmdHfd_j7uIwLH5XZ1uk9V5E1k&q=';
 
@@ -128,7 +128,7 @@ $(document).ready(function() {
 
     function getTravelOptions() {
         var originCity = $("#origin").val().trim();
-        var destinationCity = $("#destination").val().trim();
+        var destinationCity = $("#autocomplete").val().trim();
         if (originCity == '' || destinationCity == '') {
 
             // Pops up a subtle reminder if the user leaves the inputs blank
