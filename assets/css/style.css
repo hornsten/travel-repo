@@ -48,8 +48,9 @@ h1 {
 }
 
 .snippet,
-.isClosed {
-  font-size: 14px;
+.isClosed,.address{
+  font-size: 15px;
+  
 }
 
 div.card-image {
