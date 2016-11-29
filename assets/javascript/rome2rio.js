@@ -121,7 +121,8 @@ $(document).ready(function() {
     };
 
     function getTravelOptions() {
-        $('#snippet_searchpanel').show();
+
+        // $('#snippet_searchpanel').show();
 
         var originCity = $("#origin").val().trim();
         var destinationCity = $("#destination").val().trim();
