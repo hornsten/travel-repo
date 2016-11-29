@@ -14,7 +14,7 @@
 
   //Yelp dom display function
   function cb(data) {
-$(".yelpBusiness").empty();
+      $(".yelpBusiness").empty();
       for (i = 0; i < 5; i++) {
 
           var businessDiv = $('<div class="businessDiv">');
@@ -142,49 +142,47 @@ $(".yelpBusiness").empty();
 
 
               // //-------------------News api-------------------------
-              
+
               $("#wellSection").empty();
               var newsKey = "cf7b4e9977ef4c48a3e784039784debb";
-              console.log("news key "+ near);
-              var articleCounter=0;
-              var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newsKey + "&q=" +near;
+              console.log("news key " + near);
+              var articleCounter = 0;
+              var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newsKey + "&q=" + near;
 
-                 $.ajax({url: queryURL, method: "GET"}) 
+              $.ajax({ url: queryURL, method: "GET" })
                   .done(function(NYTData) {
 
-                      for (var i=0; i<3; i++) {
-                      var wellSection = $("<div>");
-                        wellSection.addClass('well');
-                        wellSection.attr('id', 'articleWell-' + articleCounter)
-                        $('#wellSection').append(wellSection);
-                        if(NYTData.response.docs[i].headline != "null")
-                        {
-                          $('.newsTitle').html("Top news from "+near);
-                          $("#articleWell-"+ articleCounter).append('<h5 class="articleHeadline"><strong>   ' + NYTData.response.docs[i].headline.main + "</strong></h5>");
+                      for (var i = 0; i < 3; i++) {
+                          var wellSection = $("<div>");
+                          wellSection.addClass('card-panel');
+                          wellSection.attr('id', 'articleWell-' + i)
+                          $('#wellSection').append(wellSection);
+                          if (NYTData.response.docs[i].headline != "null") {
+                              $('.newsTitle').html("Top news from " + near);
+                              $("#articleWell-" + i).append('<h5 class="articleHeadline"><strong>   ' + NYTData.response.docs[i].headline.main + "</strong></h5>");
 
-                          // Log the first article's Headline to console.
-                          console.log(NYTData.response.docs[i].headline.main);
-                        }
+                              // Log the first article's Headline to console.
+                              console.log(NYTData.response.docs[i].headline.main);
+                          }
 
-                        // If the article has a Byline include the headline in the HTML
-                        if( NYTData.response.docs[i].byline && NYTData.response.docs[i].byline.hasOwnProperty("original"))
-                        {
-                          $("#articleWell-"+ articleCounter).append('<p>' + NYTData.response.docs[i].byline.original + "</p>");
+                          // If the article has a Byline include the headline in the HTML
+                          if (NYTData.response.docs[i].byline && NYTData.response.docs[i].byline.hasOwnProperty("original")) {
+                              $("#articleWell-" + i).append('<p>' + NYTData.response.docs[i].byline.original + "</p>");
 
-                          // Log the first article's Author to console.
-                          console.log(NYTData.response.docs[i].byline.original);
-                        }
+                              // Log the first article's Author to console.
+                              console.log(NYTData.response.docs[i].byline.original);
+                          }
 
-                        // Then display the remaining fields in the HTML (Section Name, Date, URL)
-                        $("#articleWell-"+ articleCounter).append("<a href='" + NYTData.response.docs[i].web_url + "'>" + NYTData.response.docs[i].web_url + "</a>");
+                          // Then display the remaining fields in the HTML (Section Name, Date, URL)
+                          $("#articleWell-" + i).append("<a href='" + NYTData.response.docs[i].web_url + "'>" + NYTData.response.docs[i].web_url + "</a>");
 
-                        // Log the remaining fields to console as well
-                        console.log(NYTData.response.docs[i].pub_date);
-                        console.log(NYTData.response.docs[i].section_name);
-                        console.log(NYTData.response.docs[i].web_url);  
-                    }//for loop
+                          // Log the remaining fields to console as well
+                          console.log(NYTData.response.docs[i].pub_date);
+                          console.log(NYTData.response.docs[i].section_name);
+                          console.log(NYTData.response.docs[i].web_url);
+                      } //for loop
                   }); //done func
-               
+
               //----------------------------------------------------
 
               //weatther  
@@ -205,12 +203,12 @@ $(".yelpBusiness").empty();
                   console.log(response);
 
                   // Transfer content to HTML
-                  
-                  $(".temp").html("<h5>" + response.main.temp+ "</h5>");
+
+                  $(".temp").html("<h5>" + response.main.temp + "</h5>");
 
                   $(".wind").html("Wind Speed: " + response.wind.speed);
                   $(".humidity").html("Humidity: " + response.main.humidity);
-                  
+
                   // Log the data in the console as well
                   console.log("Wind Speed: " + response.wind.speed);
                   console.log("Humidity: " + response.main.humidity);
