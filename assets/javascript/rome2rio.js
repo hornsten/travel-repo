@@ -10,6 +10,7 @@ $(document).ready(function() {
 
     $('#search-place-info').on('click', getPlaceInfo);
     $('#search-place-info').on('click', getTravelOptions);
+    $('#search-place-info').on('click', getPics);
     $('#search-place-info').on('click', function() {
 
         getVideos();
@@ -109,6 +110,16 @@ $(document).ready(function() {
         $.blockUI;
     };
 
+    function getPics() {
+
+        var place = $('#destination').val().trim();
+
+        $('#pics-area').html('<div class="pixabay_widget" data-search="travel ' + place + '" data-max-rows="3"></div>');
+        new initPixabayWidget();
+        $('#location-input').val("");
+        return false;
+    };
+
     function getTravelOptions() {
         $('#snippet_searchpanel').show();
 
@@ -147,7 +158,7 @@ $(document).ready(function() {
                         return time;
                     };
 
-                    $('#travel-info').append('<div class="col s12 m5 left-align" id="info-' + i + '">');
+                    $('#travel-info').append('<div class="col s12 m6 left-align" id="info-' + i + '">');
                     $('#info-' + i).append('<ul class="collection with-header z-depth-3 hoverable" id="ul-' + i + '">');
                     $('#ul-' + i).append('<li class="collection-header teal-text teal-accent-4 grey lighten-5 center-align" id="' + i + '"><h5>' + response.routes[i].name);
 
