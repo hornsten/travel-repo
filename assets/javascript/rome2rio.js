@@ -1,17 +1,10 @@
 $(document).ready(function() {
 
     // -------------------------------Main Process-----------------------------
-    $(".button-collapse").sideNav();
-    //Hides the progress bar 
-    $('.progress').hide();
-    $('#contents').hide();
-    $('#snippet_searchpanel').hide();
 
-    // Creates parallax effect
-    $('.parallax').parallax();
+    elementsHide();
+    materializeEffects();
 
-    // Enables Table of Contents Scroller
-    $('.scrollspy').scrollSpy();
 
     // When "Click To Escape" button is pressed, get Place Info, Travel Options and YouTube Videos
 
@@ -23,19 +16,12 @@ $(document).ready(function() {
 
         // reveals Table of Contents
         $('#contents').show();
+        return false;
     });
 
-    // Expands Wiki Article on hover, truncates when not being read
-
-    $('#article').hover(
-
-        function() { $(this).removeClass('truncate') },
-
-        function() {
-            $(this).addClass('truncate')
-        })
-
     // ----------------------------Functions------------------------------
+
+
 
     function getPlaceInfo() {
 
@@ -87,7 +73,6 @@ $(document).ready(function() {
         });
     };
 
-
     function getVideos() {
         $('.progress').show();
         // API key and parameters
@@ -120,12 +105,8 @@ $(document).ready(function() {
 
         });
 
-        // Prevent user from seeing ugly blank video players
+        // Prevent user from seeing blank video players
         $.blockUI;
-
-        //Empty the search field and keep results within the app
-
-        // getVideos.preventDefault();
     };
 
     function getTravelOptions() {
@@ -202,5 +183,37 @@ $(document).ready(function() {
         }
     }
 
+    function elementsHide() {
+        $(".button-collapse").sideNav();
+        //Hides the progress bar 
+        $('.progress').hide();
+        $('#contents').hide();
+        $('#snippet_searchpanel').hide();
 
+    }
+
+    function materializeEffects() {
+        // Creates parallax effect
+        $('.parallax').parallax();
+
+        // Enables Table of Contents Scroller
+        $('.scrollspy').scrollSpy();
+
+        //Keeps Table Of Contents in correct range
+
+        $('#contents').pushpin({
+            top: 500,
+            bottom: 2100,
+            offset: 200
+        });
+
+        // Expands Wiki Article on hover, truncates when not being read
+        $('#article').hover(
+
+            function() { $(this).removeClass('truncate'); },
+
+            function() {
+                $(this).addClass('truncate')
+            });
+    };
 });

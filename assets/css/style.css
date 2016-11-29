@@ -2,6 +2,21 @@
   height: 500px;
 }
 
+// Class for when element is above threshold
+.pin-top {
+  position: relative;
+}
+
+// Class for when element is below threshold
+.pin-bottom {
+  position: relative;
+}
+
+// Class for when element is pinned
+.pinned {
+  position: fixed !important;
+}
+
 .parallax {
   background-attachment: fixed;
   background-position: center;
@@ -88,8 +103,7 @@ div.card-image {
 }
 
 #contents {
-  z-index: 0;
-  top: 510px;
+  /*  top: 510px;*/
   left: 10px;
 }
 
