@@ -29,6 +29,8 @@
           var pThree = $('<p class= "snippet">').text("Recent Review:" + snippet);
           var pTwo = $('<p class= "phone">').text(phone);
           var pFour = $('<p class= "phone">').text(phone);
+          var address = data.businesses[i].location.display_address;
+          var pAddress = $('<p class="address">').text("Address: " +address);
           var img = $('<img id="imgBus">');
           var img_url = data.businesses[i].image_url;
           img.attr({
@@ -37,8 +39,11 @@
           // Displays the rrating
           businessDiv.append(pOne);
           businessDiv.append(img);
-          businessDiv.append(pThree);
+          businessDiv.append(pAddress);
           businessDiv.append(pTwo);
+          businessDiv.append(pThree);
+          
+          
 
           var imgRat = $('<img id="ratingurl">');
           imgRat.attr({

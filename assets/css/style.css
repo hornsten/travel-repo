@@ -2,17 +2,17 @@
   height: 500px;
 }
 
-// Class for when element is above threshold
+// Class for when toc is above threshold
 .pin-top {
   position: relative;
 }
 
-// Class for when element is below threshold
+// Class for when toc is below threshold
 .pin-bottom {
   position: relative;
 }
 
-// Class for when element is pinned
+// Class for when toc is pinned
 .pinned {
   position: fixed !important;
 }
@@ -63,8 +63,9 @@ h1 {
 }
 
 .snippet,
-.isClosed {
-  font-size: 14px;
+.isClosed,
+.address {
+  font-size: 15px;
 }
 
 div.card-image {
