@@ -140,20 +140,20 @@
                       // console.log("***********jqhhr*********");
                   })
                   .fail(function(jqXHR, textStatus, errorThrown) {
+                      
                       console.log('error[' + errorThrown + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
                   });
 
               //yelp  -- ends here
 
 
-              // //-------------------News api-------------------------
+              // //-------------------News api call-------------------------
 
               $("#wellSection").empty();
               var newsKey = "cf7b4e9977ef4c48a3e784039784debb";
               console.log("news key " + near);
               var articleCounter = 0;
-              var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newsKey + "&q=" + near;
-
+              var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newsKey + "&q=" + near+"&begin_date=" +20160101;
               $.ajax({ url: queryURL, method: "GET" })
                   .done(function(NYTData) {
 
@@ -189,9 +189,9 @@
                       } //for loop
                   }); //done func
 
-              //----------------------------------------------------
+         //----------------------weather API call-----------------------------
 
-              //weatther  
+             
 
               var weatherKey = "ad7a1f849c0e46f75a5ff8a3f8560be8";
               console.log("weather " + near);
