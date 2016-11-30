@@ -153,7 +153,7 @@
               var newsKey = "cf7b4e9977ef4c48a3e784039784debb";
               console.log("news key " + near);
               var articleCounter = 0;
-              var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newsKey + "&q=" + near+"&begin_date=" +20160101;
+              var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newsKey + "&q=" + near+"&begin_date=" +20161101+"&end_date=" +20161130;
               $.ajax({ url: queryURL, method: "GET" })
                   .done(function(NYTData) {
 
@@ -222,7 +222,6 @@
               });
 
               //-------------weather api call ends here ------------------
-
           }, //select function end
       };
       $("#autocomplete").autocomplete(window.AutoOb); //autocomplete ends
