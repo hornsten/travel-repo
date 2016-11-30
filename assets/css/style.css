@@ -143,14 +143,19 @@ footer.page-footer {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 500px;
+  margin: 0;
   background-image: url("../images/back.jpg");
-  "
+  }
 
+#map_canvas{
+  width: 500px;
+  height:500px;
+  float:left;
 }
-
 .weather-area {
-  border-radius: 10px;
+  border-radius: 5px;
   /*border: solid 2px;*/
+  padding-left: 20px;
   width: 190px;
   background-image: url("../images/weather.jpg");
 }

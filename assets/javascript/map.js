@@ -76,12 +76,13 @@
   //------------yelp auth ends----------
 
   $(document).ready(function() {
-
-      $("#autocomplete").autocomplete({
+    window.AutoOb = {
+          resultOB: null,
           source: function(request, response) {
               geocoder.geocode({ 'address': request.term }, function(results) {
                       response($.map(results, function(item) {
-                              return {
+                     AutoOb.resultOB = item;
+                       return {
                                   label: item.formatted_address,
                                   value: item.formatted_address,
                                   latitude: item.geometry.location.lat(),
@@ -92,6 +93,7 @@
                   }) //geocoder ends
           }, //source ends
           select: function(event, ui) {
+            
               var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
               marker = new google.maps.Marker({
                   map: map,
@@ -101,11 +103,13 @@
               map.setCenter(location);
 
               //yelp data grabbed here 
-              var near = $("#autocomplete").val().trim();
-              $('#autocomplete').val();
+           
+              console.log('resultOB', window.AutoOb.resultOB);
+              console.log('AutoOb', window.AutoOb);
               // console.log("place "+near);
               var terms = 'food';
               //ajax call for yelp
+               var near = AutoOb.resultOB.formatted_address;
 
               var parameters = [];
               parameters.push(['term', terms]);
@@ -163,7 +167,8 @@
                           wellSection.attr('id', 'articleWell-' + i)
                           $('#wellSection').append(wellSection);
                           if (NYTData.response.docs[i].headline != "null") {
-                              $('.newsTitle').html("Top news from " + near);
+    
+                              document.querySelector('.newsTitle').innerHTML = "Top news from " + AutoOb.resultOB.formatted_address;
                               $("#articleWell-" + i).append('<h5 class="articleHeadline"><strong>   ' + NYTData.response.docs[i].headline.main + "</strong></h5>");
 
                               // Log the first article's Headline to console.
@@ -179,7 +184,7 @@
                           }
 
                           // Then display the remaining fields in the HTML (Section Name, Date, URL)
-                          $("#articleWell-" + i).append("<a href='" + NYTData.response.docs[i].web_url + "'>" + NYTData.response.docs[i].web_url + "</a>");
+                            $("#articleWell-" + i).append("<a href='" + NYTData.response.docs[i].web_url + "'>" + NYTData.response.docs[i].web_url + "</a>");
 
                           // Log the remaining fields to console as well
                           console.log(NYTData.response.docs[i].pub_date);
@@ -209,7 +214,7 @@
 
                   // Transfer content to HTML
 
-                  $(".temp").html("<h5>" + response.main.temp + "</h5>");
+                  $(".temp").html("<h4>" + response.main.temp + "</h4>");
 
                   $(".wind").html("Wind Speed: " + response.wind.speed);
                   $(".humidity").html("Humidity: " + response.main.humidity);
@@ -223,5 +228,6 @@
               //-------------weather api call ends here ------------------
 
           }, //select function end
-      }); //autocomplete ends
+      };
+      $("#autocomplete").autocomplete(window.AutoOb); //autocomplete ends
   }); //doc

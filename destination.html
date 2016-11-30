@@ -2,101 +2,102 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Travel</title>
-  <!-- Animate.css CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-  <!-- jQuery CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <!-- Compiled and minified Materialize JavaScript -->
-  <!-- Materialize CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" integrity="sha256-3AnlRNIdX11hf3yyjAb12b2Tac0VmZxGxpVRURyJIAw=" crossorigin="anonymous" />
-  <!-- Materialize and Google Icons -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Our Style Sheet -->
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <script type="text/javascript" src="assets/javascript/OAuth.js"></script>
-  <script type="text/javascript" src="assets/javascript/SHA1.js"></script>
-  <!--Map CDN-->
-  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
-  <html>
+    <meta charset="UTF-8">
+    <title>Travel</title>
+    <!-- Animate.css CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Compiled and minified Materialize JavaScript -->
+    <!-- Materialize CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" integrity="sha256-3AnlRNIdX11hf3yyjAb12b2Tac0VmZxGxpVRURyJIAw=" crossorigin="anonymous" />
+    <!-- Materialize and Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Our Style Sheet -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script type="text/javascript" src="assets/javascript/OAuth.js"></script>
+    <script type="text/javascript" src="assets/javascript/SHA1.js"></script>
+    <!--Map CDN-->
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    <html>
 
-  <body>
-    <!-- Navbar -->
-    <nav class="fixed-nav-bar">
-      <div class="nav-wrapper teal lighten-4">
-        <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 60px;">cloud_circle</i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="destination.html">Map and Dining</a></li>
-          <li><a class="login-status" href="#modal1">Login</a></li>
-        </ul>
-      </div>
-    </nav>
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-      <div class="modal-content">
-        <h4 class="teal-text text-darken-2">Your Adventure Starts Here</h4>
-        <input id="txtEmail" type="email" placeholder="Email">
-        <input id="txtPassword" type="password" placeholder="Password">
-        <button id="btnLogin" class="btn btn-action">Log In</button>
-        <button id="btnSignUp" class="btn btn-action btn-flat">Create an account</button>
-        <button id="btnLogout" class="btn btn-action">Log Out</button>
-        <p id="user-message"></p>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">I'd rather stay home</a>
-      </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <form class="col s12">
-          <label id="map-input-label">
-            <h3>Explore your favorite destination</h3></label>
-          <input type="text" autofocus="autofocus" id="autocomplete">
-        </form>
-      </div>
-      <div class="weather-area">
-        <div class="city"></div>
-        <div class="wind"></div>
-        <div class="humidity"></div>
-        <div class="temp"></div>
-      </div>
-      <div class="row">
-        <div class="col s12 m6">
-          <div class="yelpBusiness" style="overflow-y: scroll; overflow-x:hidden; height: 500px;">
-          </div>
-        </div>
-        <div class="col s12 m6" id="map-area">
-          <div class="z-depth-2 hoverable" id="map_canvas" style="width:500px;height:500px;float:left;">
-          </div>
-        </div>
-      </div>
-      <!--map closed-->
-      <div class="row">
-        <div class="col s12">
-          <br>
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h4 class="panel-title newsTitle"><strong><i class="fa fa-table"></i> </strong></h4>
+    <body>
+        <!-- Navbar -->
+        <nav class="fixed-nav-bar">
+            <div class="nav-wrapper teal lighten-4">
+                <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 60px;">cloud_circle</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="destination.html">Map and Dining</a></li>
+                    <li><a class="login-status" href="#modal1">Login</a></li>
+                </ul>
             </div>
-            <div class="panel-body" id="wellSection">
+        </nav>
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4 class="teal-text text-darken-2">Your Adventure Starts Here</h4>
+                <input id="txtEmail" type="email" placeholder="Email">
+                <input id="txtPassword" type="password" placeholder="Password">
+                <button id="btnLogin" class="btn btn-action">Log In</button>
+                <button id="btnSignUp" class="btn btn-action btn-flat">Create an account</button>
+                <button id="btnLogout" class="btn btn-action">Log Out</button>
+                <p id="user-message"></p>
             </div>
-          </div>
+            <div class="modal-footer">
+                <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">I'd rather stay home</a>
+            </div>
         </div>
-      </div>
-    </div>
-    </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initialize">
-    </script>
-    <script type="text/javascript" src="assets/javascript/map.js"></script>
-    <!-- <script type="text/javascript" src="assets/javascript/yelpapi.js"></script> -->
-    <!-- <script type="text/javascript" src="assets/javascript/weather.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-    <script src="assets/javascript/firebase-app.js"></script>
-  </body>
+        <div class="container">
+            <div class="row">
+                <form class="col s12">
+                    <label id="map-input-label">
+                        <h3>Explore your favorite destination</h3></label>
+                    <input type="text" autofocus="autofocus" id="autocomplete">
+                </form>
+            </div>
+            <div class="weather-area">
+                <div class="city"></div>
+                <div class="wind"></div>
+                <div class="humidity"></div>
+                <div class="temp"></div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="yelpBusiness" style="overflow-y: scroll; overflow-x:hidden; height: 500px;">
+                    </div>
+                </div>
+                <div class="col s12 m6" id="map-area">
+                    <div class="z-depth-2 hoverable" id="map_canvas">
+                    </div>
+                </div>
+            </div>
+            <!--map closed-->
+            <div class="row">
+                <div class="col s12">
+                    <br>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title newsTitle"><strong><i class="fa fa-table"></i> </strong></h4>
+                        </div>
+                        <div class="panel-body" id="wellSection">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  </html>
+        </div>
+        </div>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initialize">
+        </script>
+        <script type="text/javascript" src="assets/javascript/map.js"></script>
+        <!-- <script type="text/javascript" src="assets/javascript/yelpapi.js"></script> -->
+        <!-- <script type="text/javascript" src="assets/javascript/weather.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        <script src="assets/javascript/firebase-app.js"></script>
+    </body>
+
+    </html>
