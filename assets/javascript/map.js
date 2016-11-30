@@ -18,24 +18,22 @@
       for (i = 0; i < 5; i++) {
 
           var businessDiv = $('<div class="businessDiv">');
-
-          // Retrieves the Rating Data
-          // var busName = data.businesses[i].name;
-          //console.log("Rating : "+ rating);
           var rating = data.businesses[i].rating;
           var phone = data.businesses[i].phone;
           var snippet = data.businesses[i].snippet_text;
-          // var pOne = $('<p class= "business">').text(busName);
-         var pOne = $('<p class="business">').append("<a href=' "+data.businesses[i].url +"' target='_blank'>"+ data.businesses[i].name);var pThree = $('<p class= "snippet">').text("Recent Review:" + snippet);
-          var pTwo = $('<p class= "phone">').text(phone);
-          var pFour = $('<p class= "phone">').text(phone);
-          var address = data.businesses[i].location.display_address;
-          var pAddress = $('<p class="address">').text("Address: " + address);
           var img = $('<img id="imgBus">');
+          $('#imgBus').wrap("<a target = '_blank' href='" + data.businesses[i].url + "'>");
           var img_url = data.businesses[i].image_url;
           img.attr({
               'src': img_url
           });
+          // var pOne = $('<p class= "business">').text(busName);
+         var pOne = $('<p class="business">').append("<a href=' "+data.businesses[i].url +"' target='_blank'>"+ data.businesses[i].name);
+         var pThree = $('<p class= "snippet">').text("Recent Review:" + snippet);
+          var pTwo = $('<p class= "phone">').text(phone);
+          var address = data.businesses[i].location.display_address;
+          var pAddress = $('<p class="address">').text("Address: " + address);
+          
           // Displays the rrating
           businessDiv.append(pOne);
           businessDiv.append(img);
