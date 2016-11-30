@@ -140,14 +140,14 @@
                       // console.log("***********jqhhr*********");
                   })
                   .fail(function(jqXHR, textStatus, errorThrown) {
-                      
+                      Materialize.toast('Sorry ,We do not recognize the place you searched for!<br> Hence no dining results',4000);
                       console.log('error[' + errorThrown + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
                   });
 
               //yelp  -- ends here
 
 
-              // //-------------------News api call-------------------------
+             //-------------------News api call-------------------------
 
               $("#wellSection").empty();
               var newsKey = "cf7b4e9977ef4c48a3e784039784debb";
