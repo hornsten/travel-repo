@@ -20,13 +20,13 @@
           var businessDiv = $('<div class="businessDiv">');
 
           // Retrieves the Rating Data
-          var busName = data.businesses[i].name;
+          // var busName = data.businesses[i].name;
           //console.log("Rating : "+ rating);
           var rating = data.businesses[i].rating;
           var phone = data.businesses[i].phone;
           var snippet = data.businesses[i].snippet_text;
-          var pOne = $('<p class= "business">').text(busName);
-          var pThree = $('<p class= "snippet">').text("Recent Review:" + snippet);
+          // var pOne = $('<p class= "business">').text(busName);
+         var pOne = $('<p class="business">').append("<a href=' "+data.businesses[i].url +"' target='_blank'>"+ data.businesses[i].name);var pThree = $('<p class= "snippet">').text("Recent Review:" + snippet);
           var pTwo = $('<p class= "phone">').text(phone);
           var pFour = $('<p class= "phone">').text(phone);
           var address = data.businesses[i].location.display_address;
@@ -42,8 +42,6 @@
           businessDiv.append(pAddress);
           businessDiv.append(pTwo);
           businessDiv.append(pThree);
-
-
 
           var imgRat = $('<img id="ratingurl">');
           imgRat.attr({
