@@ -1,6 +1,6 @@
   var map;
   var geocoder;
-
+$("#weather-card").hide();
   function initialize() {
       var myLatlong = new google.maps.LatLng(48.856614, 2.3522219000000177);
       var myOptions = {
@@ -221,8 +221,9 @@
 
               var weatherKey = "ad7a1f849c0e46f75a5ff8a3f8560be8";
               console.log("weather " + near);
+              $("#weather-card").show();
               var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + near + "&units=imperial&appid=" + weatherKey;
-
+ 
               $.ajax({ url: queryURL, method: 'GET' })
 
               // We store all of the retrieved data inside of an object called "response"
@@ -235,10 +236,7 @@
                   console.log(response);
 
                   // Transfer content to HTML
-
                   $(".temp").html("Temperature (F): " + response.main.temp);
-
-
                   $(".wind").html("Wind Speed: " + response.wind.speed);
                   $(".humidity").html("Humidity: " + response.main.humidity);
 
