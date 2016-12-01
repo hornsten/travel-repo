@@ -34,19 +34,26 @@
           var pFour = $('<p class="phone teal-text text-darken-3">').text(phone);
           var address = data.businesses[i].location.display_address;
           var pAddress = $('<p class="address teal-text text-darken-3">').text(address);
+
           var img = $('<img id="imgBus">');
+          $('#imgBus').wrap("<a target = '_blank' href='" + data.businesses[i].url + "'>");
           var img_url = data.businesses[i].image_url;
           img.attr({
               'src': img_url
           });
+          // var pOne = $('<p class= "business">').text(busName);
+          var pOne = $('<p class="business">').append("<a href=' " + data.businesses[i].url + "' target='_blank'>" + data.businesses[i].name);
+          var pThree = $('<p class= "snippet">').text("Recent Review:" + snippet);
+          var pTwo = $('<p class= "phone">').text(phone);
+          var address = data.businesses[i].location.display_address;
+          var pAddress = $('<p class="address">').text("Address: " + address);
+
           // Displays the rrating
           // businessDiv.append(pOne);
           // businessDiv.append(img);
           // businessDiv.append(pAddress);
           // businessDiv.append(pTwo);
           // businessDiv.append(pThree);
-
-
 
           var imgRat = $('<img id="ratingurl">');
           imgRat.attr({
@@ -90,13 +97,12 @@
   //------------yelp auth ends----------
 
   $(document).ready(function() {
-
-      $("#autocomplete").autocomplete({
+      window.AutoOb = {
+          resultOB: null,
           source: function(request, response) {
               geocoder.geocode({ 'address': request.term }, function(results) {
-                      console.log("results: ", results);
                       response($.map(results, function(item) {
-                              console.log('item result', item);
+                              AutoOb.resultOB = item;
                               return {
                                   label: item.formatted_address,
                                   value: item.formatted_address,
@@ -108,6 +114,7 @@
                   }) //geocoder ends
           }, //source ends
           select: function(event, ui) {
+
               var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
               marker = new google.maps.Marker({
                   map: map,
@@ -117,11 +124,13 @@
               map.setCenter(location);
 
               //yelp data grabbed here 
-              var near = $("#autocomplete").val().trim();
-              $('#autocomplete').val();
+
+              console.log('resultOB', window.AutoOb.resultOB);
+              console.log('AutoOb', window.AutoOb);
               // console.log("place "+near);
               var terms = 'food';
               //ajax call for yelp
+              var near = AutoOb.resultOB.formatted_address;
 
               var parameters = [];
               parameters.push(['term', terms]);
@@ -169,6 +178,7 @@
               var newsKey = "cf7b4e9977ef4c48a3e784039784debb";
               console.log("news key " + near);
               var articleCounter = 0;
+
               var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newsKey + "&q=" + near + "&begin_date=" + 20161101 + "&end_date=" + 20161130;
 
               $.ajax({ url: queryURL, method: "GET" })
@@ -180,7 +190,8 @@
                           wellSection.attr('id', 'articleWell-' + i)
                           $('#wellSection').append(wellSection);
                           if (NYTData.response.docs[i].headline != "null") {
-                              $('.newsTitle').html("Top news from " + near);
+
+                              document.querySelector('.newsTitle').innerHTML = "Top news from " + AutoOb.resultOB.formatted_address;
                               $("#articleWell-" + i).append('<h5 class="articleHeadline"><strong>   ' + NYTData.response.docs[i].headline.main + "</strong></h5>");
 
                               // Log the first article's Headline to console.
@@ -206,7 +217,7 @@
                   }); //done func
 
 
-              //---------------------weather API call-------------------------
+              //----------------------weather API call-----------------------------
 
               var weatherKey = "ad7a1f849c0e46f75a5ff8a3f8560be8";
               console.log("weather " + near);
@@ -227,6 +238,7 @@
 
                   $(".temp").html("Temperature (F): " + response.main.temp);
 
+
                   $(".wind").html("Wind Speed: " + response.wind.speed);
                   $(".humidity").html("Humidity: " + response.main.humidity);
 
@@ -237,7 +249,7 @@
               });
 
               //-------------weather api call ends here ------------------
-
           }, //select function end
-      }); //autocomplete ends
+      };
+      $("#autocomplete").autocomplete(window.AutoOb); //autocomplete ends
   }); //doc
