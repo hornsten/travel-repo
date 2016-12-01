@@ -179,6 +179,7 @@ footer.page-footer {
   height: 500px;
   margin: 0;
   background-image: url("../images/travel-doubt.jpg");
+  background-repeat: no-repeat;
 }
 
 #map_canvas {
