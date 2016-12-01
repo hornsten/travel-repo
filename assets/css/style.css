@@ -180,6 +180,7 @@ footer.page-footer {
   margin: 0;
   background-image: url("../images/travel-doubt.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #map_canvas {
