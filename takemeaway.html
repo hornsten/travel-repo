@@ -4,26 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Take Me Away</title>
+  <!-- Our Favicon -->
+  <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
   <!-- Animate.css CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <!-- jQuery CDN -->
-  <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
   <!-- Materialize CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.css" integrity="sha256-3AnlRNIdX11hf3yyjAb12b2Tac0VmZxGxpVRURyJIAw=" crossorigin="anonymous" />
-  <!-- Google Icons  -->
+  <!-- Materialize and Google Icons  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Our CSS file -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <!-- Our Javascript files -->
-  <script type="text/javascript" src="assets/javascript/takemeaway.js"></script>
   <script type="text/javascript" src="assets/javascript/OAuth.js"></script>
   <script type="text/javascript" src="assets/javascript/SHA1.js"></script>
-  <!-- Flights snippet -->
+  <!-- Link to Moment.js -->
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <!-- Materialize js CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+  <!-- Skyscanner API source -->
   <script type="text/javascript" src="//api.skyscanner.net/api.ashx?key=2a208cf3-bdbb-494f-b25e-ad293cada1d0"></script>
+  <!-- Flights snippet -->
   <script type="text/javascript">
   skyscanner.load("snippets", "2");
 
@@ -32,6 +39,7 @@
     snippet.setShape("box400x400");
     snippet.setCulture("en-GB");
     snippet.setCurrency("USD");
+    snippet.setColourScheme("classicbluedark");
     snippet.setProduct("flights", "1");
 
     snippet.draw(document.getElementById("snippet_searchpanel"));
@@ -39,7 +47,6 @@
   skyscanner.setOnLoadCallback(main);
   </script>
   <!-- Hotel snippets -->
-  <script type="text/javascript" src="//api.skyscanner.net/api.ashx?key="></script>
   <script type="text/javascript">
   skyscanner.load("snippets", "2");
 
@@ -48,9 +55,26 @@
     snippet.setShape("box400x400");
     snippet.setCulture("en-GB");
     snippet.setCurrency("USD");
+    snippet.setColourScheme("classicbluedark");
     snippet.setProduct("hotels", "1");
 
     snippet.draw(document.getElementById("snippet_searchpanel_hotel"));
+  }
+  skyscanner.setOnLoadCallback(main);
+  </script>
+  <!-- Cars snippet -->
+  <script type="text/javascript">
+  skyscanner.load("snippets", "2");
+
+  function main() {
+    var snippet = new skyscanner.snippets.SearchPanelControl();
+    snippet.setShape("box400x400");
+    snippet.setCulture("en-GB");
+    snippet.setCurrency("USD");
+    snippet.setColourScheme("classicbluedark");
+    snippet.setProduct("carhire", "1");
+
+    snippet.draw(document.getElementById("snippet_searchpanel_cars"));
   }
   skyscanner.setOnLoadCallback(main);
   </script>
@@ -60,7 +84,7 @@
   <!-- Navbar -->
   <nav class="fixed-nav-bar">
     <div class="nav-wrapper teal lighten-4 ">
-      <a href="#" class="brand-logo"><i class="material-icons" style="font-size: 60px;">cloud_circle</i></a>
+      <a href="#" class="brand-logo"><i class="material-icons" style="font-size: 60px;">cloud_circle</i>travelbliss</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="index.html">Home</a></li>
         <li><a href="destination.html">Map and Dining</a></li>
@@ -110,51 +134,108 @@
             <h3 class="teal-text teal-accent-4">Get your flights on</h3>
           </blockquote>
           <p class="teal-text" style="clear:both">Check out these flight search engines</p>
-          <div class="row" id="flight-info" style="clear:both">
-            <div id="kayak-logo" class="col s6 m6 l4">
-              <a href="https://www.kayak.com/flights"><img src="assets/images/kayak-logo.png" alt="kayak-logo" style="height:40px"></a>
+          <div class="row card-panel grey lighten-3" id="flight-info" style="clear:both;">
+            <div id="kayak-logo" class="col s12 m12 l6">
+              <a href="https://www.kayak.com/flights"><img src="assets/images/kayak-logo.png" alt="kayak-logo" style="height:50px"></a>
             </div>
-            <div id="orbitz-logo" class="col s6 m6 l4">
-              <a href="https://www.orbitz.com/Flights"><img src="assets/images/orbitz-logo.png" alt="orbitz-logo" style="height:40px"></a>
+            <div id="orbitz-logo" class="col s12 m12 l6">
+              <a href="https://www.orbitz.com/Flights"><img src="assets/images/orbitz-logo.png" alt="orbitz-logo" style="height:50px"></a>
             </div>
-            <div id="priceline-logo" class="col s6 m6 l4">
-              <a href="https://www.priceline.com/flights"><img src="assets/images/priceline-logo.png" alt="priceline-logo" style="height:40px"></a>
+            <div id="priceline-logo" class="col s12 m12 l6">
+              <a href="https://www.priceline.com/flights"><img src="assets/images/priceline-logo.png" alt="priceline-logo" style="height:50px"></a>
             </div>
-            <div id="expedia-logo" class="col s6 m6 l4">
-              <a href="https://www.expedia.com/flights"><img src="assets/images/expedia-logo.png" alt="expedia-logo" style="height:40px"></a>
+            <div id="expedia-logo" class="col s12 m12 l6">
+              <a href="https://www.expedia.com/flights"><img src="assets/images/expedia-logo.png" alt="expedia-logo" style="height:50px"></a>
             </div>
-            <div id="studentuniverse-logo" class="col s6 m6 l4">
-              <a href="https://www.studentuniverse.com/flights"><img src="assets/images/studentuniverse-logo.png" alt="studentuniverse-logo" style="height:30px"></a>
+            <div id="studentuniverse-logo" class="col s12 m12 l6">
+              <a href="https://www.studentuniverse.com/flights"><img src="assets/images/studentuniverse-logo.png" alt="studentuniverse-logo" style="height:40px"></a>
             </div>
-            <div id="travelocity-logo" class="col s6 m6 l4">
-              <a href="https://www.travelocity.com/flights"><img src="assets/images/travelocity-logo.png" alt="travelocity-logo" style="height:40px"></a>
+            <div id="travelocity-logo" class="col s12 m12 l6">
+              <a href="https://www.travelocity.com/flights"><img src="assets/images/travelocity-logo.png" alt="travelocity-logo" style="height:50px"></a>
             </div>
           </div>
+          <p class="teal-text" style="clear:both">Or book your tickets here</p>
           <div id="snippet_searchpanel" style="width: auto; height:auto; float: left; clear: right; margin-bottom: 20px"></div>
+          <br>
+          <blockquote style="clear: both">
+            <h3 class="teal-text teal-accent-4">Bonus</h3>
+          </blockquote>
+          <p class="teal-text" style="clear:both">Want to know when is the cheapest to fly in the next one year?</p>
+          <div class="row card-panel grey lighten-3" style="clear:both;">
+            <form class="input group" class="input-field section scrollspy" id="travel-planner">
+              <input id="origin" type="text" class="form-control teal-text text-darken-3" placeholder="Where from?">
+              <input id="destination" type="text" class="form-control teal-text text-darken-3" placeholder="Where to?">
+            </form>
+          </div>
+          <button class="btn waves-effect waves-light" type="submit" id="cheapest-flight">Save me some bucks!
+            <i class="material-icons right">send</i>
+          </button>
+          <button class="btn waves-effect waves-light" type="submit" id="reset-cheapest-flight">Reset Form
+            <i class="material-icons right">settings_backup_restore</i>
+          </button>
+          <div class="progress" id="progress-1">
+            <div class="indeterminate"></div>
+          </div>
+          <div id="cheap-flight-info">
+            <!-- Cheap flights information will be appended here  -->
+          </div>
         </div>
-        <p class="teal-text" style="clear:both"><b>BONUS</b>: Care to know when is the cheapest to fly next year?</p>
-        <form class="input group" class="input-field section scrollspy" id="travel-planner">
-          <input id="origin" type="text" class="form-control teal-text text-darken-3" placeholder="Where from?">
-          <input id="destination" type="text" class="form-control teal-text text-darken-3" placeholder="Where to?">
-        </form>
-        <button class="btn waves-effect waves-light" type="submit" id="cheapest-flight">Save me some bucks!
-          <i class="material-icons right">send</i>
-        </button>
         <!-- Cars search -->
         <div id="cars-search">
           <blockquote>
             <h3 class="teal-text teal-accent-4">Need a car?</h3>
           </blockquote>
-          <div id="cars-info"></div>
+          <p class="teal-text" style="clear:both">Look for transportation through these providers</p>
+          <div class="row card-panel grey lighten-3" style="clear:both;">
+            <div id="uber-logo" class="col s12 m12 l6">
+              <a href="https://www.uber.com/"><img src="assets/images/uber-logo.png" alt="uber-logo" style="height:30px"></a>
+            </div>
+            <div id="lyft-logo" class="col s12 m12 l6">
+              <a href="https://www.lyft.com"><img src="assets/images/lyft-logo.png" alt="lyft-logo" style="height:60px"></a>
+            </div>
+            <div id="budget-logo" class="col s12 m12 l6">
+              <a href="http://www.budgetinternational.com/"><img src="assets/images/budget-logo.png" alt="budget-logo" style="height:40px"></a>
+            </div>
+            <div id="expedia-logo" class="col s12 m12 l6">
+              <a href="https://www.expedia.com/cars"><img src="assets/images/expedia-logo.png" alt="expedia-logo" style="height:40px"></a>
+            </div>
+            <div id="hertz-logo" class="col s12 m12 l6">
+              <a href="https://www.hertz.com/rentacar/misc/index.jsp?targetPage=international_destinations.jsp"><img src="assets/images/hertz-logo.gif" alt="hertz-logo" style="height:60px"></a>
+            </div>
+            <div id="europcar-logo" class="col s12 m12 l6">
+              <a href="https://www.europcar.com/"><img src="assets/images/europcar-logo.gif" alt="europcar-logo" style="height:60px"></a>
+            </div>
+          </div>
+          <div id="cars-info">
+            <br>
+            <p class="teal-text" style="clear:both">Or search for a rental here</p>
+            <div id="snippet_searchpanel_cars" style="width: auto; height:auto; float: left; clear: right; margin-bottom: 20px"></div>
+          </div>
         </div>
         <!-- Accommodation search -->
         <div id="hotel-search">
           <blockquote>
             <h3 class="teal-text teal-accent-4">Where to stay</h3>
           </blockquote>
-          <p class="teal-text" style="clear:both">Book a place to stay here</p>
-          <div id="snippet_searchpanel_hotel" style="width: auto; height:auto;"></div>
+          <p class="teal-text" style="clear:both">Find a place to stay through these sites</p>
           <div id="hotel-info">
+            <div class="row card-panel grey lighten-3" style="clear:both;">
+              <div id="airbnb-logo" class="col s12 m12 l6">
+                <a href="https://www.airbnb.com/"><img src="assets/images/airbnb-logo.png" alt="airbnb-logo" style="height:50px"></a>
+              </div>
+              <div id="booking-logo" class="col s12 m12 l6">
+                <a href="https://www.booking.com"><img src="assets/images/booking-logo.png" alt="booking-logo" style="height:50px"></a>
+              </div>
+              <div id="agoda-logo" class="col s12 m12 l6">
+                <a href="http://www.agoda.com/"><img src="assets/images/agoda-logo.png" alt="agoda-logo" style="height:60px; padding-left: 10px"></a>
+              </div>
+              <div id="hotels-logo" class="col s12 m12 l6">
+                <a href="https://www.hotels.com"><img src="assets/images/hotels-logo.png" alt="hotels-logo" style="height:50px"></a>
+              </div>
+            </div>
+            <br>
+            <p class="teal-text" style="clear:both">Or book a stay here</p>
+            <div id="snippet_searchpanel_hotel" style="width: auto; height:auto; float: left; clear: right; margin-bottom: 20px"></div>
           </div>
         </div>
         <!-- Music search -->
@@ -162,10 +243,62 @@
           <blockquote>
             <h3 class="teal-text teal-accent-4">Music for the road</h3>
           </blockquote>
-          <div id="music-info"></div>
+          <p class="teal-text" style="clear:both">Get a playlist of popular songs at your origin and destination</p>
+          <div id="music-input">
+            <div class="card-panel teal lighten-2">
+              <p style="margin: 0px; size: 20px; color:white">Where From?</p>
+              <input id="music-from" type="text" class="form-control teal-text text-darken-3">
+            </div>
+            <div class="card-panel grey lighten-2">
+              <p style="margin: 0px; size: 20px; color:white">Where To?</p>
+              <input id="music-to" type="text" class="form-control teal-text text-darken-3">
+            </div>
+            <div id="function-button"></div>
+            <div id="start-music-button"></div>
+            <div id="reset-button"></div>
+            <div class="progress" id="progress-2">
+              <div class="indeterminate"></div>
+            </div>
+            <div id="playlist">
+              <div id="music-player"></div>
+              <div id="playlist-tables" class="row" style="margin-top: 10px">
+                <!-- List of top tracks at origin -->
+                <div class="col s12 m12 l6" id="origin-playlist" style="margin-top:10px">
+                  <div class="card teal lighten-1 btn" style="margin: 0px; display: flex; height: auto; width: auto; line-height: 200%">
+                    <p class="white-text" style="margin: 0 auto; text-align: center">Top Tracks at your
+                      <br>Origin</p>
+                  </div>
+                  <div class="card white" style="margin: 0px; padding: 15px 20px">
+                    <ul class="collection" id="origin-song-body" style="margin: 0px;">
+                      <!-- append content here -->
+                    </ul>
+                  </div>
+                  <div class="col s12 m12 l12 card teal lighten-1 btn" style="margin: 0px;">
+                    <p class="white-text" style="margin: 0px; text-align: center">...</p>
+                  </div>
+                </div>
+                <!-- List of top tracks at destination -->
+                <div class="col s12 m12 l6" id="destination-playlist" style="margin-top:10px; float: right">
+                  <div class="card teal lighten-1 btn" style="margin: 0px; display: flex; height: auto; line-height: 200%">
+                    <p class="white-text" style="margin: 0 auto; text-align: center">Top Tracks at your
+                      <br>Destination</p>
+                  </div>
+                  <div class="card white" style="margin: 0px; padding: 15px 20px">
+                    <ul class="collection" id="destination-song-body" style="margin: 0px">
+                      <!-- append content here -->
+                    </ul>
+                  </div>
+                  <div class="col s12 m12 l12 teal lighten-1 btn" style="margin: 0px;">
+                    <p class="white-text" style="margin: 0px; text-align: center">...</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
   <!-- Footer -->
   <footer class="page-footer teal lighten-4">
@@ -173,7 +306,7 @@
       <div class="row">
         <div class="col l6 s12">
           <h5 class="white-text">travelbliss</h5>
-          <p class="grey-text text-lighten-4">For all your travel inspirations</p>
+          <p class="grey-text text-lighten-4">For all your travel inspiration</p>
         </div>
         <div class="col l4 offset-l2 s12">
           <h5 class="white-text">Links</h5>
@@ -193,6 +326,16 @@
       </div>
     </div>
   </footer>
+  <!--Scripts and cdn-->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initialize">
+  </script>
+  <script type="text/javascript" src="assets/javascript/map.js"></script>
+  <!-- Our Javascript files -->
+  <script type="text/javascript" src="assets/javascript/takemeaway.js"></script>
+  <!-- <script type="text/javascript" src="assets/javascript/yelpapi.js"></script> -->
+  <!-- <script type="text/javascript" src="assets/javascript/weather.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+  <script src="assets/javascript/firebase-app.js"></script>
 </body>
 
 </html>
