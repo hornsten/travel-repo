@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Travel</title>
+  <title>Destination</title>
   <!-- Animate.css CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
   <!-- jQuery CDN -->
@@ -28,10 +28,11 @@
     <!-- Navbar -->
     <nav class="fixed-nav-bar">
       <div class="nav-wrapper teal lighten-4">
-        <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 60px;">cloud_circle</i></a>
+        <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 60px;">cloud_circle</i>travelbliss</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="index.html">Home</a></li>
-          <li><a href="destination.html">Map and Dining</a></li>
+          <li><a href="destination.html">Destination</a></li>
+          <li><a href="takemeaway.html">Take Me Away</a></li>
           <li><a class="login-status" href="#modal1">Login</a></li>
         </ul>
       </div>
@@ -55,15 +56,22 @@
       <div class="row">
         <form class="col s12">
           <label id="map-input-label">
-            <h3>Explore your favorite destination</h3></label>
-          <input type="text" autofocus="autofocus" id="autocomplete">
+            <blockquote>
+              <h3 class="teal-text text-darken-3">Explore your favorite destination</h3></label>
+          </blockquote>
+          <input class="teal-text text-darken-3" type="text" autofocus="autofocus" id="autocomplete">
         </form>
       </div>
-      <div class="weather-area">
-        <div class="city"></div>
-        <div class="wind"></div>
-        <div class="humidity"></div>
-        <div class="temp"></div>
+    </div>
+    <div class="container">
+      <div class="row weather-area">
+        <div class="col s12 center-align">
+          <div class="card-panel teal lighten-3 valign-wrapper" id="weather-card">
+            <div class="white-text col s4 valign wind"></div>
+            <div class="white-text col s4 valign humidity"></div>
+            <div class="white-text col s4 valign temp"></div>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col s12 m6">
@@ -71,7 +79,7 @@
           </div>
         </div>
         <div class="col s12 m6" id="map-area">
-          <div class="z-depth-2 hoverable" id="map_canvas" style="width:500px;height:500px;float:left;">
+          <div class="z-depth-2 hoverable responsive-img" id="map_canvas" style="width:435px;height:500px;float:left;">
           </div>
         </div>
       </div>
@@ -89,7 +97,32 @@
         </div>
       </div>
     </div>
-    </div>
+    <footer class="page-footer teal lighten-4">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">travelbliss</h5>
+            <p class="grey-text text-lighten-4">For all your travel inspirations</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#title">Back To Top</a></li>
+              <li><a class="grey-text text-lighten-3" href="index.html">Home</a></li>
+              <li><a class="grey-text text-lighten-3" href="destination.html">Destination</a></li>
+              <li><a class="grey-text text-lighten-3" href="takemeaway.html">Take Me Away</a></li>
+              <li><a class="grey-text text-lighten-3" href="#modal1">Login</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2016 Copyright Jessica Hornsten, Uyen Lam, and Mitali Naik
+        </div>
+      </div>
+    </footer>
+    <!--Scripts and cdn-->
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPqBUdfB5V760_ZXQmfNdvlUWKIiMtO64&callback=initialize">
     </script>
     <script type="text/javascript" src="assets/javascript/map.js"></script>

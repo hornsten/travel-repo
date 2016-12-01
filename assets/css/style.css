@@ -17,6 +17,21 @@
   position: fixed !important;
 }
 
+#information,
+#pixabay,
+#vids,
+#rome2rio {
+  padding: 20px 0px;
+}
+
+#search-input {
+  padding: 40px 0px;
+}
+
+#pixabay {
+  min-height: 500px;
+}
+
 .parallax {
   background-attachment: fixed;
   background-position: center;
@@ -25,7 +40,7 @@
 }
 
 #parallax-1 {
-  background-image: url("../images/bali.jpeg");
+  background-image: url("../images/blue-beach.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 1;
@@ -38,12 +53,17 @@
   z-index: 1;
 }
 
-#main-content,
-#travel-options {
+#parallax-3 {
+  background-image: url("../images/wanderlust.jpg");
+}
+
+
+/*#main-content {
   background-opacity: 0;
   padding-top: 20px;
   padding-bottom: 0;
 }
+*/
 
 #brand-logo {
   font-size: 100px;
@@ -69,7 +89,7 @@ h1 {
 }
 
 div.card-image {
-  background: #e0e0e0;
+  background: #bdbdbd;
 }
 
 .fixed-nav-bar {
@@ -86,16 +106,13 @@ div.card-image {
 
 #location-input,
 #origin,
-#destination {
+#destination,
+#autocomplete {
   font-size: 30px;
 }
 
 .progress {
   margin-top: 20px;
-}
-
-#snippet_searchpanel {
-  float: right;
 }
 
 #rome2rio-input {
@@ -106,6 +123,8 @@ div.card-image {
 #contents {
   /*  top: 510px;*/
   left: 10px;
+  z-index: 2;
+  float: left;
 }
 
 body {
@@ -130,27 +149,43 @@ footer.page-footer {
 
 #wellSection {
   /*border: solid 2px;*/
-  border-radius: 10px;
+  /* border-radius: 10px;
+*/
   /* width: 60%;*/
   /*  background-color: #e6ffe6;*/
 }
 
+#reset-form {
+  margin-top: 10px;
+}
+
 .temp {
-  font-size: 24px;
+  /*font-size: 24px;*/
 }
 
 .yelpBusiness {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 500px;
-  background-image: url("../images/back.jpg");
-  "
+  margin: 0;
+  background-image: url("../images/travel-doubt.jpg");
+}
 
+#map_canvas {
+  width: 500px;
+  height: 500px;
+  float: left;
 }
 
 .weather-area {
-  border-radius: 10px;
+  /* border-radius: 10px;
   /*border: solid 2px;*/
-  width: 190px;
+  /*width: 190px;
   background-image: url("../images/weather.jpg");
+  background-repeat: no-repeat;*/
+}
+
+#weather-card {
+  padding: 30px 70px;
+  font-size: 18px;
 }

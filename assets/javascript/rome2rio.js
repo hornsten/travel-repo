@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+    var search = $('#search-place-info');
+    var articles = $('#article');
+    var pics = $('#pics-area');
+    var travel = $('#travel-div');
+
     // -------------------------------Main Process-----------------------------
 
     elementsHide();
@@ -8,10 +13,10 @@ $(document).ready(function() {
 
     // When "Click To Escape" button is pressed, get Place Info, Travel Options and YouTube Videos
 
-    $('#search-place-info').on('click', getPlaceInfo);
-    $('#search-place-info').on('click', getTravelOptions);
-    $('#search-place-info').on('click', getPics);
-    $('#search-place-info').on('click', function() {
+    search.on('click', getPlaceInfo);
+    search.on('click', getTravelOptions);
+    search.on('click', getPics);
+    search.on('click', function() {
 
         getVideos();
 
@@ -25,7 +30,7 @@ $(document).ready(function() {
 
 
     function getPlaceInfo() {
-
+        $('#information').show();
         //Converts user input to Title Case so that Wiki article can be found
 
         function titleCase(str) {
@@ -76,9 +81,10 @@ $(document).ready(function() {
 
     function getVideos() {
         $('.progress').show();
+        $('#vids').show();
         // API key and parameters
         var parameters = $('#destination').val().trim();
-        var pathway = 'https://www.googleapis.com/youtube/v3/search?part=snippet&safesearch=strict&maxResults=6&length=short';
+        var pathway = 'https://www.googleapis.com/youtube/v3/search?part=snippet&safesearch=strict&maxResults=6&controls=0&fs=0&length=short';
         var apiKey = '&key=AIzaSyDcpRXHyPmdHfd_j7uIwLH5XZ1uk9V5E1k&q=';
 
         var queryURL = pathway + apiKey + 'travel' + parameters + '&type=video';
@@ -99,7 +105,7 @@ $(document).ready(function() {
                 $('#videos').append('<div class="col s12 m4" id="col-' + i + '">');
                 $('#col-' + i).append('<div class="card center medium z-depth-3 hoverable" style="border-radius:2%" id="card-' + i + '">');
                 $('#card-' + i).append('<div class="video-container" id="container-' + i + '">');
-                $('#container-' + i).append('<object id="object-' + i + '" width="400" height="300" data="https://www.youtube.com/embed/' + response.items[i].id.videoId + '?controls=1"></object>');
+                $('#container-' + i).append('<object id="object-' + i + '" width="400" height="300" data="https://www.youtube.com/embed/' + response.items[i].id.videoId + '?controls=0"></object>');
                 $('#card-' + i).append('<div class="card-content" id="content-' + i + '">');
                 $('#content-' + i).append('<p class="teal-text text-darken-3">' + response.items[i].snippet.description);
             }
@@ -108,21 +114,21 @@ $(document).ready(function() {
 
         // Prevent user from seeing blank video players
         $.blockUI;
+
     };
 
     function getPics() {
-
+        $('#pixabay').show();
         var place = $('#destination').val().trim();
 
-        $('#pics-area').html('<div class="pixabay_widget" data-search="travel ' + place + '" data-max-rows="3"></div>');
+        $('#pics-area').html('<div class="pixabay_widget" data-search="travel ' + place + '" data-max-rows="4"></div>');
         new initPixabayWidget();
-        $('#location-input').val("");
-        return false;
+
+
     };
 
     function getTravelOptions() {
-
-        // $('#snippet_searchpanel').show();
+        $('#rome2rio').show();
 
         var originCity = $("#origin").val().trim();
         var destinationCity = $("#destination").val().trim();
@@ -161,7 +167,7 @@ $(document).ready(function() {
 
                     $('#travel-info').append('<div class="col s12 m6 left-align" id="info-' + i + '">');
                     $('#info-' + i).append('<ul class="collection with-header z-depth-3 hoverable" id="ul-' + i + '">');
-                    $('#ul-' + i).append('<li class="collection-header teal-text teal-accent-4 grey lighten-5 center-align" id="' + i + '"><h5>' + response.routes[i].name);
+                    $('#ul-' + i).append('<li class="collection-header teal-text teal-accent-4 teal lighten-5 center-align" id="' + i + '"><h5>' + response.routes[i].name);
 
                     if (response.routes[i].name.includes("Fly")) {
 
@@ -179,16 +185,16 @@ $(document).ready(function() {
                     }
 
                     $('#ul-' + i).append('<ul id="travel-stats-' + i + '">')
-                        .append('<li class="collection-item grey lighten-4" id="coll-' + i + '">Distance: ' + response.routes[i].distance + " miles")
-                        .append('<li class="collection-item grey lighten-3" id="coll-' + i + '">Median price: $' + response.routes[i].indicativePrices[0].price + " USD");
+                        .append('<li class="collection-item teal lighten-4" id="coll-' + i + '">Distance: ' + response.routes[i].distance + " miles")
+                        .append('<li class="collection-item teal lighten-3" id="coll-' + i + '">Median price: $' + response.routes[i].indicativePrices[0].price + " USD");
 
                     //excludes "Drive" when writing price range data, since the API does not define this value
                     if (response.routes[i].name.includes("Drive") === false) {
 
-                        $('#ul-' + i).append('<li class="collection-item grey lighten-2" id="coll-' + i + '">Price Range: $' + response.routes[i].indicativePrices[0].priceLow + " - $" + response.routes[i].indicativePrices[0].priceHigh + " USD")
+                        $('#ul-' + i).append('<li class="collection-item teal lighten-2" id="coll-' + i + '">Price Range: $' + response.routes[i].indicativePrices[0].priceLow + " - $" + response.routes[i].indicativePrices[0].priceHigh + " USD")
                     }
 
-                    $('#ul-' + i).append('<li class="collection-item grey lighten-1" id="coll-' + i + '">Total Duration: ' + getTime(response.routes[i].totalDuration));
+                    $('#ul-' + i).append('<li class="collection-item teal lighten-1" id="coll-' + i + '">Total Duration: ' + getTime(response.routes[i].totalDuration));
                 }
             });
 
@@ -200,13 +206,16 @@ $(document).ready(function() {
         //Hides the progress bar 
         $('.progress').hide();
         $('#contents').hide();
-        $('#snippet_searchpanel').hide();
+        $('#information').hide();
+        $('#pixabay').hide();
+        $('#vids').hide();
+        $('#rome2rio').hide();
 
     }
 
     function materializeEffects() {
         // Creates parallax effect
-        $('.parallax').parallax();
+        // $('.parallax').parallax();
 
         // Enables Table of Contents Scroller
         $('.scrollspy').scrollSpy();
@@ -214,8 +223,8 @@ $(document).ready(function() {
         //Keeps Table Of Contents in correct range
 
         $('#contents').pushpin({
-            top: 500,
-            bottom: 2100,
+            top: 550,
+            bottom: 2500,
             offset: 200
         });
 
@@ -227,5 +236,6 @@ $(document).ready(function() {
             function() {
                 $(this).addClass('truncate')
             });
+
     };
 });

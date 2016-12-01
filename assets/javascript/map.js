@@ -17,7 +17,10 @@
       $(".yelpBusiness").empty();
       for (i = 0; i < 5; i++) {
 
-          var businessDiv = $('<div class="businessDiv">');
+          var businessDiv = $('<div class="businessDiv card horizontal hoverable">');
+          var cardImage = $('<div class="card-image">');
+          var cardStacked = $('<div class="card-stacked">');
+          var cardContent = $('<div class="card-content">');
 
           // Retrieves the Rating Data
           var busName = data.businesses[i].name;
@@ -25,23 +28,23 @@
           var rating = data.businesses[i].rating;
           var phone = data.businesses[i].phone;
           var snippet = data.businesses[i].snippet_text;
-          var pOne = $('<p class= "business">').text(busName);
-          var pThree = $('<p class= "snippet">').text("Recent Review:" + snippet);
+          var pOne = $('<h5 class= "business teal-text text-darken-3">').html(busName);
+          var pThree = $('<p class= "snippet teal-text text-darken-3">').html(snippet);
           var pTwo = $('<p class= "phone">').text(phone);
-          var pFour = $('<p class= "phone">').text(phone);
+          var pFour = $('<p class="phone teal-text text-darken-3">').text(phone);
           var address = data.businesses[i].location.display_address;
-          var pAddress = $('<p class="address">').text("Address: " + address);
+          var pAddress = $('<p class="address teal-text text-darken-3">').text(address);
           var img = $('<img id="imgBus">');
           var img_url = data.businesses[i].image_url;
           img.attr({
               'src': img_url
           });
           // Displays the rrating
-          businessDiv.append(pOne);
-          businessDiv.append(img);
-          businessDiv.append(pAddress);
-          businessDiv.append(pTwo);
-          businessDiv.append(pThree);
+          // businessDiv.append(pOne);
+          // businessDiv.append(img);
+          // businessDiv.append(pAddress);
+          // businessDiv.append(pTwo);
+          // businessDiv.append(pThree);
 
 
 
@@ -49,7 +52,18 @@
           imgRat.attr({
               'src': data.businesses[i].rating_img_url,
           });
-          businessDiv.append(imgRat);
+
+          businessDiv.append(cardImage);
+          cardImage.append(img);
+          businessDiv.append(cardStacked);
+          cardStacked.append(cardContent);
+          cardContent.append(pOne)
+              .append(pAddress)
+              .append(imgRat)
+              .append(pFour)
+              // .append(pClosed)
+
+          .append(pThree);
 
           //  businessDiv.append(pFour);
           //  businessDiv.append(pClosed);
@@ -80,7 +94,9 @@
       $("#autocomplete").autocomplete({
           source: function(request, response) {
               geocoder.geocode({ 'address': request.term }, function(results) {
+                      console.log("results: ", results);
                       response($.map(results, function(item) {
+                              console.log('item result', item);
                               return {
                                   label: item.formatted_address,
                                   value: item.formatted_address,
@@ -140,19 +156,20 @@
                       // console.log("***********jqhhr*********");
                   })
                   .fail(function(jqXHR, textStatus, errorThrown) {
+                      Materialize.toast('Sorry ,We do not recognize the place you searched for!<br> Hence no dining results', 4000);
                       console.log('error[' + errorThrown + '], status[' + textStatus + '], jqXHR[' + JSON.stringify(jqXHR) + ']');
                   });
 
               //yelp  -- ends here
 
 
-              // //-------------------News api-------------------------
+              //-------------------News api call-------------------------
 
               $("#wellSection").empty();
               var newsKey = "cf7b4e9977ef4c48a3e784039784debb";
               console.log("news key " + near);
               var articleCounter = 0;
-              var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newsKey + "&q=" + near;
+              var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newsKey + "&q=" + near + "&begin_date=" + 20161101 + "&end_date=" + 20161130;
 
               $.ajax({ url: queryURL, method: "GET" })
                   .done(function(NYTData) {
@@ -188,9 +205,8 @@
                       } //for loop
                   }); //done func
 
-              //----------------------------------------------------
 
-              //weatther  
+              //---------------------weather API call-------------------------
 
               var weatherKey = "ad7a1f849c0e46f75a5ff8a3f8560be8";
               console.log("weather " + near);
@@ -209,7 +225,7 @@
 
                   // Transfer content to HTML
 
-                  $(".temp").html("<h5>" + response.main.temp + "</h5>");
+                  $(".temp").html("Temperature (F): " + response.main.temp);
 
                   $(".wind").html("Wind Speed: " + response.wind.speed);
                   $(".humidity").html("Humidity: " + response.main.humidity);

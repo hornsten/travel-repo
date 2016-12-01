@@ -28,10 +28,10 @@
   <!-- Navbar -->
   <nav class="fixed-nav-bar">
     <div class="nav-wrapper teal lighten-4 ">
-      <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 60px;">cloud_circle</i></a>
+      <a href="index.html" class="brand-logo"><i class="material-icons" style="font-size: 60px;">cloud_circle</i>travelbliss</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="index.html">Home</a></li>
-        <li><a href="destination.html">Map and Dining</a></li>
+        <li><a href="destination.html">Destination</a></li>
         <li><a href="takemeaway.html">Take Me Away</a></li>
         <li><a class="login-status" href="#modal1">Login</a></li>
       </ul>
@@ -61,17 +61,17 @@
   <div id="travel-options">
     <!-- Table of Contents Scrollspy -->
     <div class="col hide-on-med-and-down m3 l2">
-      <div class="toc-wrapper pinned" id="contents">
+      <div class="toc-wrapper" id="contents">
         <ul class="section table-of-contents">
           <li><a href="#title" class="active">Search</a></li>
-          <li><a href="#article" class>Info</a></li>
           <li><a href="#pics-area" class>Images</a></li>
+          <li><a href="#article" class>Info</a></li>
           <li><a href="#vid-area" class>Videos</a></li>
           <li><a href="#travel-div" class>Getting There</a></li>
         </ul>
       </div>
     </div>
-    <div class="container">
+    <div class="container" id="search-input">
       <blockquote>
         <h3 class="teal-text teal-accent-4">Let's Go Somewhere</h3>
       </blockquote>
@@ -85,42 +85,26 @@
         <div class="indeterminate"></div>
       </div>
     </div>
-    <!-- Added dynamically, this is the area where Travel Data will display -->
-    <div class="container" id="travel-stuff">
-      <!-- Wiki Article -->
-      <div id="article" class="section scrollspy"></div>
-      <!-- Pixabay -->
-      <div id="pics-area">
-        <div class="pixabay_widget section scrollspy" data-search="travel kyoto" data-max-rows="3"></div>
+    <!-- Pixabay -->
+    <div class="teal lighten-3" id="pixabay">
+      <div class="container" id="pics-area">
+        <div class="pixabay_widget section scrollspy" data-search="travel kyoto" data-max-rows="4"></div>
       </div>
-      <!--  <script type="text/javascript" src="//api.skyscanner.net/api.ashx?key=2a208cf3-bdbb-494f-b25e-ad293cada1d0"></script>
-      <script type="text/javascript">
-      skyscanner.load("snippets", "2");
-
-      function main() {
-        var snippet = new skyscanner.snippets.SearchPanelControl();
-        snippet.setShape("skyscraper");
-        snippet.setCulture("en-GB");
-        snippet.setCurrency("USD");
-        snippet.setMarket("US");
-        snippet.setDeparture("ORD", false);
-        snippet.setDestination("HNL", false);
-        snippet.setColourScheme("classicbluelight");
-        snippet.setProduct("flights", "1");
-        snippet.setProduct("hotels", "2");
-        snippet.setProduct("carhire", "3");
-
-        snippet.draw(document.getElementById("snippet_searchpanel"));
-      }
-      skyscanner.setOnLoadCallback(main);
-      </script> -->
-      <!-- YouTube Videos -->
-      <div id="vid-area" class="section scrollspy">
+    </div>
+    <!-- Added dynamically, this is the area where Travel Data will display -->
+    <div id="information">
+      <!-- Wiki Article -->
+      <div class="container" id="article" class="section scrollspy"></div>
+    </div>
+    <!-- YouTube Videos -->
+    <div class="teal lighten-3" id="vids">
+      <div class="container" id="vid-area" class="section scrollspy">
         <div class="row" id='videos'></div>
       </div>
-      <!-- Travel Options from Rome2Rio API -->
-      <div class="row section scrollspy" id="travel-div">
-        <!--  <div class="right-align s12 m2" id="snippet_searchpanel" style="width: auto; height:auto;"></div> -->
+    </div>
+    <!-- Travel Options from Rome2Rio API -->
+    <div id="rome2rio">
+      <div class="container row section scrollspy" id="travel-div">
         <div id="travel-info"></div>
       </div>
     </div>
@@ -135,15 +119,16 @@
         <div class="row">
           <div class="col l6 s12">
             <h5 class="white-text">travelbliss</h5>
-            <p class="grey-text text-lighten-4">For all your travel inspiration</p>
+            <p class="grey-text text-lighten-4">For all your travel inspirations</p>
           </div>
           <div class="col l4 offset-l2 s12">
             <h5 class="white-text">Links</h5>
             <ul>
               <li><a class="grey-text text-lighten-3" href="#title">Back To Top</a></li>
+              <li><a class="grey-text text-lighten-3" href="index.html">Home</a></li>
               <li><a class="grey-text text-lighten-3" href="destination.html">Destination</a></li>
               <li><a class="grey-text text-lighten-3" href="takemeaway.html">Take Me Away</a></li>
-              <li><a class="grey-text text-lighten-3 login-status" href="#modal1">Login</a></li>
+              <li><a class="grey-text text-lighten-3" href="#modal1">Login</a></li>
             </ul>
           </div>
         </div>
