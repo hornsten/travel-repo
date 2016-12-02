@@ -74,7 +74,7 @@ $(document).ready(function() {
             },
             error: function(errorMessage) {
 
-                console.log(error);
+
             }
         });
     };
@@ -204,8 +204,8 @@ $(document).ready(function() {
     }
 
     function elementsHide() {
+        // Hides elements
         $(".button-collapse").sideNav();
-        //Hides the progress bar 
         $('.progress').hide();
         $('#contents').hide();
         $('#information').hide();
@@ -216,8 +216,6 @@ $(document).ready(function() {
     }
 
     function materializeEffects() {
-        // Creates parallax effect
-        // $('.parallax').parallax();
 
         // Enables Table of Contents Scroller
         $('.scrollspy').scrollSpy();
