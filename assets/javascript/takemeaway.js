@@ -52,6 +52,7 @@ function getCheapFlights() {
     var originQueryURLCode = pathwayFindSkyCode + originInput + "&" + apiKey;
     console.log(originQueryURLCode);
 
+    // start grabbing the Skycanner code for user's destination
     $.ajax({
         url: originQueryURLCode,
         crossDomain: true,
@@ -60,27 +61,11 @@ function getCheapFlights() {
         dataType: 'jsonp',
         jsonpCallback: 'jsonp',
 
-        // headers:{
-        //     'Access-Control-Allow-Origin':'*',
-        // }
-        // beforeSend: function(xhr){
-        //     xhr.setRequestHeader('Accept', 'application/jsonp');
-        //     xhr.setRequestHeader('Access-Control-Allow-Origin','*');
-        //     xhr.setRequestHeader('X-Forwarded-For','192.160.165.63');
-        // },
-        // Content-Type: 'application/json',
-        // Accept: 'application/json',
-        // X-Forwarded-For
-        // jsonpCallback: 'callback',
-        // xhrFields: {
-        //     withCredentials: true
-        // },
-
-
     }).done(function(response) {
         console.log("Origin Place Information");
         console.log(response);
 
+        // record the Skyscanner code into the global variable destinationSkyCode
         originSkyCode = response.Places[0].PlaceId;
         console.log("Origin Skyscanner Code: " + originSkyCode);
 
@@ -88,6 +73,7 @@ function getCheapFlights() {
         var destinationQueryURLCode = pathwayFindSkyCode + destinationInput + "&" + apiKey;
         console.log(destinationQueryURLCode);
 
+        // start grabbing the Skycanner code for user's destination
         $.ajax({
             url: destinationQueryURLCode,
             crossDomain: true,
@@ -100,6 +86,7 @@ function getCheapFlights() {
             console.log("Destination Place Information");
             console.log(response);
 
+            // record the Skyscanner code into the global variable destinationSkyCode
             destinationSkyCode = response.Places[0].PlaceId;
             console.log("Destination Skyscanner Code: " + destinationSkyCode);
 
@@ -110,6 +97,7 @@ function getCheapFlights() {
             var queryURL = pathwayFindPrice + "/" + originSkyCode + "/" + destinationSkyCode + '/anytime/anytime?' + apiKey;
             console.log(queryURL);
 
+            // grab information from Skyscanner given the user's origin and destination's Skyscanner IDs
             $.ajax({
                 url: queryURL,
                 crossDomain: true,
@@ -121,6 +109,7 @@ function getCheapFlights() {
             }).done(function(response) {
                 console.log(response);
 
+                // store information about the available carriers into a global variable to reference carrierID and carrierName later
                 for (var i = 0; i < response.Carriers.length - 1; i++) {
                     carrierInfo.push(new Object(
                         carriers = {
@@ -133,6 +122,7 @@ function getCheapFlights() {
 
                 };
 
+                // store information about the quotes into a global variable
                 for (var i = 0; i < response.Quotes.length - 1; i++) {
                     quotes.push(new Object(
                         quotesInfo = {
@@ -150,6 +140,7 @@ function getCheapFlights() {
                 };
 
             }).done(function() {
+                // sort the quotes by direct and indirect flights
                 for (var i = 0; i < quotes.length - 1; i++) {
                     if (quotes[i].direct === true) {
                         directflights.push(quotes[i]);
@@ -166,10 +157,12 @@ function getCheapFlights() {
                 console.log("Indirect Flights");
                 console.log(indirectflights);
 
+                // grab the direct flights' minimum prices and store them into a global array
                 for (var i = 0; i < directflights.length - 1; i++) {
                     directPrices.push(directflights[i].minPrice);
                 }
 
+                // grab the indirect flights' minimum prices and store them into a global array
                 for (var i = 0; i < indirectflights.length - 1; i++) {
                     indirectPrices.push(indirectflights[i].minPrice);
                 }
@@ -180,6 +173,8 @@ function getCheapFlights() {
                 console.log("Indirect Flight Prices");
                 console.log(indirectPrices);
 
+                // after we have the arrays of minimum direct prices and minimum indirect prices
+                // we find the minimum values in those arrays, a.k.a the lowest price possible
                 minDirectPrice = Math.min.apply(Math, directPrices);
                 minIndirectPrice = Math.min.apply(Math, indirectPrices);
                 console.log("Minimum Direct Flight Prices");
@@ -188,11 +183,16 @@ function getCheapFlights() {
                 console.log(minIndirectPrice);
 
             }).done(function() {
+                // look for the flight with that lowest price in the directflights array, a.k.a the colelction of all direct flights
+                // if there's a match, push all information of that flight into an empty global array
                 for (var i = 0; i < directflights.length - 1; i++) {
                     if (minDirectPrice === directflights[i].minPrice) {
                         minDirectFlight.push(directflights[i]);
                     }
                 }
+
+                // look for the flight with that lowest price in the indirectflights array, a.k.a the colelction of all indirect flights
+                // if there's a match, push all information of that flight into an empty global array
                 for (var i = 0; i < indirectflights.length - 1; i++) {
                     if (minIndirectPrice === indirectflights[i].minPrice) {
                         minIndirectFlight.push(indirectflights[i]);
@@ -205,13 +205,16 @@ function getCheapFlights() {
                 console.log("Indirect flight with the lowest price");
                 console.log(minIndirectFlight);
 
+                // at this point, we finish processing all information
+                // hide the progress bar
                 $('#progress-1').hide();
 
+                // check if there is a direct flight for that route at all (some routes don't)
                 if (minDirectFlight.length > 0) {
                     var outboundCarrier = '';
                     var inboundCarrier = '';
 
-
+                    // match carrierName with carrierId so we can display that information on the cards
                     function a() {
                         for (var i = 0; i < minDirectFlight.length; i++) {
 
@@ -230,9 +233,10 @@ function getCheapFlights() {
                     // call the functions
                     a();
 
+                    // when it's done
                     $.when(a).done(function() {
 
-
+                        // creating direct flight cards
                         for (var i = 0; i < minDirectFlight.length; i++) {
                             $('#cheap-flight-info').append('<div class="col s12 m6 l6 left-align" style="padding: 0px" id="di-col-' + i + '">');
                             $('#di-col-' + i).append('<div class="card" id="di-card-' + i + '">');
@@ -250,19 +254,21 @@ function getCheapFlights() {
                     })
                 }
 
+                // check if there is an indirect flight for that route at all (some routes may not do)
                 if (minIndirectFlight.length > 0) {
                     var outboundCarrier = '';
                     var inboundCarrier = '';
 
+                    // match carrierName with carrierId so we can display that information on the cards
                     function a() {
-                        for (var i = 0; i < minDirectFlight.length; i++) {
+                        for (var i = 0; i < minIndirectFlight.length; i++) {
 
                             for (var m = 0; m < carrierInfo.length - 1; m++) {
-                                if (minDirectFlight[i].outboundCarrierID === carrierInfo[m].carrierId) {
+                                if (minIndirectFlight[i].outboundCarrierID === carrierInfo[m].carrierId) {
                                     outboundCarrier = carrierInfo[m].carrierName;
                                 }
 
-                                if (minDirectFlight[i].inboundCarrierID === carrierInfo[m].carrierId) {
+                                if (minIndirectFlight[i].inboundCarrierID === carrierInfo[m].carrierId) {
                                     inboundCarrier = carrierInfo[m].carrierName;
                                 }
                             }
@@ -271,8 +277,11 @@ function getCheapFlights() {
 
                     // call the functions
                     a();
+
+                    // when it's done
                     $.when(a).done(function() {
 
+                        // creating indirect flight cards
                         for (var i = 0; i < minIndirectFlight.length; i++) {
                             $('#cheap-flight-info').append('<div class="col s12 m6 l6 left-align" style="padding: 0px" id="in-col-' + i + '">');
                             $('#in-col-' + i).append('<div class="card" id="in-card-' + i + '">');
