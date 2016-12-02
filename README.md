@@ -38,6 +38,8 @@ I![ScreenShot](assets/images/travelbliss.png)
 ## Authors
 
 * **Jessica Hornsten** - *Initial work* - [hornsten](https://github.com/hornsten)
+* **Mitali Naik** - *Initial work* - [mitalimn](https://github.com/mitalimn)
+* **Uyen Lam** - *Initial work* - [uyenlam](https://github.com/uyenlam)
 
 See also the list of [contributors](https://github.com/hornsten/travel-repo/graphs/contributors) who participated in this project.
 
